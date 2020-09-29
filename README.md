@@ -1,4 +1,7 @@
 ![Discord](https://img.shields.io/discord/757632394504175736?color=%236ba9ee&label=%23kargain-com&logo=discord&style=flat-square)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <h1 align="center" style="margin-top: 1em; margin-bottom: 3em;">
   <p><a href="https://kargain.com"><img alt="kargain logo" src="./images/Kargain_logo_gris-01.png" alt="kargain.com" width="300"></a></p>
@@ -56,3 +59,22 @@ In production
 
 
 ## Contibutors
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/daniilgor"><img src="https://avatars1.githubusercontent.com/u/20680290?v=4" width="100px;" alt=""/><br /><sub><b>daniilgor</b></sub></a><br /><a href="#infra-daniilgor" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/kargainworld/kargain-com/commits?author=daniilgor" title="Tests">⚠️</a> <a href="https://github.com/kargainworld/kargain-com/commits?author=daniilgor" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
