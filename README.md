@@ -1,7 +1,7 @@
 ![Discord](https://img.shields.io/discord/757632394504175736?color=%236ba9ee&label=%23kargain-com&logo=discord&style=flat-square)
 
 <h1 align="center" style="margin-top: 1em; margin-bottom: 3em;">
-  <p><a href="https://kargain.com"><img alt="kargain logo" src="./images/Kargain_logo_gris-01.png" alt="kargain.com" width="125"></a></p>
+  <p><a href="https://kargain.com"><img alt="kargain logo" src="./images/Kargain_logo_gris-01.png" alt="kargain.com" width="300"></a></p>
   <p>Welcome to Kargain.com!</p>
 </h1>
 
