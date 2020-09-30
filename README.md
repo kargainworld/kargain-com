@@ -22,7 +22,7 @@ Web application created with a database that will allow anyone to post and respo
 ## General info
 Was it for a non-profit organization?
 Kargain.com propose a different approach for now.
-The subscription to the Kargain platform will be paid for professional actors, and the revenues thus received will be allocated to the maintenance of the project and the developers’ remuneration.
+The subscription to the Kargain platform will be paid for professional actors, and the revenues thus received will be allocated to the maintenance of the project and the developer's remuneration.
 
 
 ## Technologies
