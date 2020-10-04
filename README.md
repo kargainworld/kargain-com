@@ -38,7 +38,7 @@ How to start working on kargain.com production
 1. Fork each repo: kargainworld/kargain-app & kargainworld/kargain-api
 2. Clone your forks
 ```
-$ clone git
+$ git clone https://github.com/*exampleuser/repository.git*
 $ cd ~/
 ```
 3. Install dependencies
