@@ -41,7 +41,7 @@ How to start working on kargain.com production
 $ git clone https://github.com/*exampleuser/repository.git*
 $ cd ~/
 ```
-3. Install dependencies for backend *kargain-com/kargain-api* & for *frontend kargain-com/kargain-app*
+3. Install dependencies for the backend *kargain-com/kargain-api* and for the frontend *kargain-com/kargain-app*
 ```
 $ yarn install
 ```
