@@ -35,13 +35,13 @@ The subscription to the Kargain platform will be paid for professional actors, a
 ## Development
 How to start working on kargain.com production
 
-1. Fork each repo: kargainworld/kargain-app & kargainworld/kargain-api
+1. Fork repo
 2. Clone your forks
 ```
 $ git clone https://github.com/*exampleuser/repository.git*
 $ cd ~/
 ```
-3. Install dependencies
+3. Install dependencies for backend *kargain-com/kargain-api* & for *frontend kargain-com/kargain-app*
 ```
 $ yarn install
 ```
