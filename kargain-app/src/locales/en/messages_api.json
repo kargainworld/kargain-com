@@ -1,0 +1,18 @@
+{
+    "invalid_token": "Invalid token",
+    "unknown_user": "Unknown user",
+    "missing_password" : "Missing password",
+    "missing_or_invalid_email" : "Missing or invalid email",
+    "password_not_valid" : "Password not valid",
+    "passwords_not_matching": "Password not matching",
+    "user_not_found" : "User not found",
+    "announce_not_found" : "Announce not found",
+    "comment_is_empty" : "Comment is empty",
+    "comment_not_found" : "Comment not found",
+    "message_not_found" : "Message not found",
+    "response_not_found" : "Response not found",
+    "missing_offer" : "Missing offer",
+    "missing_vehicle_model" : "Missing vehicle type model",
+    "missing_vehicle_make" : "Missing make",
+    "not_allowed" : "Not allowed"
+}

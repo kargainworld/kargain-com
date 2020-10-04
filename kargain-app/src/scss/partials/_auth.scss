@@ -1,0 +1,39 @@
+@import 'variables';
+
+.register-fb {
+  display: inline-flex;
+  align-items: center;
+  margin: .5rem;
+  padding: .5rem;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  background-color: #445aae;
+  text-decoration: none;
+  color: $white;
+  transition: 0.5s;
+
+  img{
+    margin-right: 15px;
+  }
+
+  &:hover{
+    color: $white;
+    text-decoration: none;
+    background-color: #304492;
+    transition: 0.5s;
+  }
+}
+
+.register-g{
+  @extend .register-fb;
+  background-color: #e53215;
+  &:hover{
+    background-color: #d63116;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-fb, .register-g{
+    padding: .5rem;
+  }
+}

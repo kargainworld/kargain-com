@@ -1,0 +1,27 @@
+{
+    "select-filters" : "Sélectionner les filtres",
+    "price": "Prix",
+    "adType": "Type d'annonce",
+    "vehicleType": "Type de véhicule",
+    "vehicleEngineType" : "Type de moteur",
+    "vehicleEngineGas" : "Type de carburant",
+    "vehicleEngineCylinder" : "Nombre de cylindres",
+    "manufacturer" : {
+        "make": "Marque"
+    },
+    "vehicleFunctionUse": "Fonction du véhicule",
+    "vehicleGeneralState": "Etat général du véhicule",
+    "mileage": "Kilométrage",
+    "powerKw": "Puissance",
+    "consumptionGkm" : "Consommation",
+    "countrySelect": "Pays",
+    "address.city": "Ville",
+    "radius": "Rayon",
+    "equipments": "Equipements",
+    "emission": "Emission",
+    "doors": "Nombre de portes",
+    "seats": "Nombre de places",
+    "paint": "Peinture",
+    "externalColor": "Couleur extérieure",
+    "internalColor": "Couleur intérieure"
+}

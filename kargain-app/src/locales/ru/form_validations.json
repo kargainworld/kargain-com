@@ -1,0 +1,7 @@
+{
+    "required" : "Обязательное поле",
+    "min_price_{min}{currency}" : "Минимум {{max}}{{currency}}",
+    "max_price_{max}{currency}" : "Максимум {{max}}{{currency}}",
+    "min_length_{min}" : "Минимальная длина: {{min}} символов",
+    "regexPwd{min}{max}" : "От 4 до 16 символов. Минимум 1 цифра"
+}

@@ -1,0 +1,25 @@
+{
+    "allLanguages": [
+        "fr",
+        "en",
+        "ru"
+    ],
+    "allLanguagesLabel": {
+        "fr": "Français",
+        "en": "English",
+        "ru": "Pусский"
+    },
+    "defaultLanguage": "fr",
+    "currentPagesDir": "src/routes",
+    "localesPath": "src/locales",
+    "finalPagesDir": "src/pages",
+    "pages": {
+        "*": [
+            "vehicles",
+            "filters"
+        ],
+        "/static/pricing" : [
+            "pricing"
+        ]
+    }
+}

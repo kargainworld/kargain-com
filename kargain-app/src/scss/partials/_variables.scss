@@ -1,0 +1,29 @@
+$default-font-family: "Quicksand", "Raleway", "Droid Sans", sans-serif;
+//$default-font-color: #263238;
+$default-font-color: #343333;
+
+//colors
+$black: #111111;
+$black2: #111;
+$grey: #AAAAAA;
+$grey2: gainsboro;
+$green: #2ECC40;
+$blue_light: #4685FC;
+$blue: #2C6BFC;
+$blue_strong: #2650D9;
+$yellow: #FFDC00;
+$orange: #FF851B;
+$red: #FF4136;
+$white : #FFFF;
+
+$font-weight-base: 400;
+$font-weight-bold: 600;
+
+//Boostrap overrides
+$container-max-widths: (
+        xs: 500px,
+        sm: 650px,
+        md: 850px, //overrides
+        lg: 960px,
+        xl: 1140px
+);

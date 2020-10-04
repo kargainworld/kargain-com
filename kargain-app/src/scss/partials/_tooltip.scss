@@ -1,0 +1,550 @@
+@import "variables";
+
+.fg-tooltip-wrapper{
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: $primary;
+  border-radius: 0;
+  color: white;
+  width: 9px;
+  padding: 0;
+  border:none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  .fg-fa-wrapper{
+    display: inline-block;
+  }
+  i{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: $primary;
+    margin-top: -10px;
+    margin-right: -6px;
+    border-radius: 100%;
+    line-height: 18px;
+  }
+  &:hover{
+    box-shadow: none;
+    background: $primary;
+    i{
+      background: $primary;
+    }
+  }
+}
+
+.fg-tooltip{
+  display: none;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+
+  &.fg-tooltip-responsive,
+  &.fg-tooltip-default,
+  &.fg-tooltip-full{
+    position: absolute;
+    top: calc(50% - 10px);
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    font-size: 20px;
+    line-height: 20px;
+    border: 1px solid #0f5dbc;
+    background-color: $white;
+    color: #0f5dbc;
+
+    &.left{
+      left: 0;
+    }
+    &.right{
+      right: 50px;
+    }
+    &.top{
+      top: 0;
+    }
+  }
+
+  &.fg-tooltip-responsive{
+    right: 0!important;
+  }
+  &.fg-tooltip-default{
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  &.fg-tooltip-plain{
+    appearance: none;
+    margin-top:5px;
+    position:relative;
+    width: 100%;
+    max-width:100%;
+    border: none !important;
+    height: auto;
+    display: block !important;
+    text-align: left;
+    padding-left: 0;
+    margin-left: 0;
+    span{
+      display: block;
+      color: #4b525e;
+      font-size: 12px;
+      cursor: default;
+      user-select: none;
+    }
+  }
+
+  &.fg-tooltip-message{
+    appearance: none;
+    position:relative;
+    width: 100%;
+    max-width:100%;
+    border: none !important;
+    height: auto;
+    display: block;
+    padding-left: 0;
+    margin-left: 0;
+    background-color: transparent;
+    text-decoration: underline;
+    span{
+      display: block;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    &.no-hover{
+      span{
+        cursor: auto !important;
+      }
+    }
+  }
+
+  &.fg-tooltip-astuce{
+    cursor: text;
+    margin-top:15px;
+    position:relative;
+    width: 100%;
+    max-width:100%;
+    border: 1px solid $primary;
+    color: $primary;
+    border-radius: 5px;
+    height: auto;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    padding: 15px 15px 15px 60px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: white url("/images/svg/light-bulb-blue.svg") no-repeat 14px 50%;
+    background-size: 27px;
+    span{
+      display: block;
+    }
+    .bubble{
+      display: block;
+      position: absolute;
+      left: 50px;
+      top: -21px;
+      font-size: 30px;
+      color: $secondary;
+    }
+    .infos{
+      display: none;
+    }
+    .fg-fa-chat{
+      display: inline-block;
+    }
+  }
+
+  &.fg-tooltip-iframe{
+    background: transparent none;
+    margin-top: 5px;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    border: none!important;
+    height: auto;
+    display: block;
+    text-align: left;
+    padding-left: 0;
+    margin-left: 0;
+    span{
+      display: block;
+      color: #4b525e;
+      font-size: 12px;
+    }
+  }
+}
+
+[data-device="mobile"]{
+  .fg-tooltip{
+    &.fg-tooltip-message{
+      &[data-toggle="modal"]{
+        background: transparent none;
+
+        span{
+          color: $primary;
+        }
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+    .custom-groupinput .fg-tooltip.fg-tooltip-responsive.right{
+      top: 0;
+    }
+    .fg-field-group{
+      &.with-tooltip{
+        &>.fg-tooltip-responsive{
+          //top: 0;
+        }
+      }
+    }
+
+    .fg-tooltip {
+      display: none;
+      &.fg-tooltip-responsive,
+      &.fg-tooltip-full,
+      &.fg-tooltip-chat,
+      &.fg-tooltip-astuce {
+        display: inline-block;
+        &.only {
+          display: block;
+        }
+        &.right{
+          right: 0;
+        }
+      }
+    }
+
+    .responsive_only {
+      .fg-tooltip {
+        &.fg-tooltip-responsive {
+          display: block;
+        }
+      }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .fg-tooltip {
+      display: block;
+      &.fg-tooltip-responsive {
+        display: none;
+        &.only {
+          display: block;
+        }
+      }
+    }
+
+    .responsive_only {
+      .fg-tooltip {
+        &.fg-tooltip-responsive {
+          display: block;
+        }
+      }
+    }
+}
+
+/*MODAL*/
+.modal-open{
+  padding-right: 0 !important;
+  .modal-backdrop{
+    background: rgba(0, 0, 0, 0.5);
+    z-index:1040;
+    height:100%;
+    width:100%;
+    &+.modal-backdrop{
+      z-index:1050;
+    }
+  }
+
+  .fg-modal-tooltip{
+    &.fade {
+      .modal-dialog{
+        -webkit-transform: translate(0,0);
+        transform: translate(0,0);
+      }
+    }
+    .modal-dialog{
+      pointer-events: auto;
+      .modal-content{
+        border-radius: 0;
+        border: none;
+        background: white;
+        color: #4b525e;
+        .modal-header{
+          border:none !important;
+        }
+        .modal-footer{
+          border: none !important;
+          button{
+            margin: auto;
+            color: white;
+            background: $secondary;
+            box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding-left: 35px;
+            padding-right: 35px;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+          }
+        }
+      }
+      .close-modal {
+        position: absolute;
+        right: -40px;
+        top: -40px;
+        width: 40px;
+        height: 40px;
+        opacity: 1;
+        z-index: 99;
+        border-radius: 100%;
+        background: url("/images2/cancel-orange.svg") no-repeat center center;
+        background-size: cover;
+        &:hover{
+          background: url("/images2/cancel.svg") no-repeat center center;
+          background-size: cover;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px){
+  .modal-dialog {
+    max-width: 95%;
+    margin: 30px auto;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+    .modal-open {
+      .fg-modal-tooltip {
+        .modal-dialog {
+          .modal-content {
+            .modal-footer {
+              button {
+                &:hover {
+                  color: white;
+                  span {
+                    background: url("/images2/cancel.svg") no-repeat center center;
+                    background-size: cover;
+                  }
+                }
+              }
+            }
+          }
+          .close-modal {
+            top: 10px;
+            right: 10px;
+          }
+        }
+      }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .modal-open {
+      .fg-modal-tooltip {
+        .modal-dialog {
+          .close-modal {
+            top: 10px;
+            right: 10px;
+          }
+        }
+      }
+    }
+}
+
+.fg-label{
+  &.with-tooltip{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    @media (max-width: 576px) {
+      justify-content: start;
+    }
+    &.default, &.responsive{
+      padding-right: 30px;
+    }
+    button.fg-tooltip{
+      position: inherit;
+      //top:auto;
+      margin-top: 6px;
+      @media (max-width: 576px) {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.fg-field-group{
+  &.with-tooltip{
+    position: relative;
+  }
+}
+
+i.arrow-down{
+  width: 9px;
+  height: 20px;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 284.929 284.929' fill='%23343a40'%3E%3Cpath d='M282.082 76.511l-14.274-14.273c-1.902-1.906-4.093-2.856-6.57-2.856-2.471 0-4.661.95-6.563 2.856L142.466 174.441 30.262 62.241c-1.903-1.906-4.093-2.856-6.567-2.856-2.475 0-4.665.95-6.567 2.856L2.856 76.515C.95 78.417 0 80.607 0 83.082c0 2.473.953 4.663 2.856 6.565l133.043 133.046c1.902 1.903 4.093 2.854 6.567 2.854s4.661-.951 6.562-2.854L282.082 89.647c1.902-1.903 2.847-4.093 2.847-6.565 0-2.475-.945-4.665-2.847-6.571z'/%3E%3C/svg%3E");
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: rotateX(180deg);
+  transition: transform .3s ease;
+}
+
+.collapsed i.arrow-down{
+  transform: rotateX(0deg);
+}
+
+/*BOOTSTRAP TOOLTIP*/
+$arrow_size : 10px;
+$arrow_position : 12px;
+
+.tooltip{
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  color: #4b525e;
+  .tooltip-icon{
+    position: absolute;
+    color: $secondary;
+    top: 15px;
+    font-size: 20px;
+    left: 15px;
+    height: 20px;
+    width: 20px;
+    background: url("/images2/light-bulb-orange.svg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .tooltip-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $secondary;
+    border-radius: 100%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 17px;
+    font-weight: normal;
+    color: $secondary;
+    cursor: pointer;
+    background: url("/images2/cancel-orange.svg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .tooltip-inner{
+    background: none;
+    max-width: 400px;
+    padding: 20px 40px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 18px;
+    color: #4b525e;
+  }
+
+  &.show,&.in{
+    opacity: 1;
+  }
+
+  .arrow{
+    position:absolute;
+    width:0;
+    height:0;
+    display: none;
+  }
+
+  &.bs-tooltip-left{
+    margin-top: -$arrow_position !important;
+    .arrow{
+      border-top:$arrow_size solid white;
+      bottom:-$arrow_size;
+      left:50%;
+      margin-left:-$arrow_size;
+      border-left:$arrow_size solid transparent;
+      border-right:$arrow_size solid transparent;
+    }
+  }
+
+  &.bs-tooltip-right{
+    margin-left: $arrow_position !important;
+    .arrow{
+      border-right:$arrow_size solid white;
+      left:-$arrow_size;
+      margin-top:-$arrow_size;
+      border-top:$arrow_size solid transparent;
+      border-bottom:$arrow_size solid transparent;
+    }
+  }
+
+  &.bs-tooltip-bottom{
+    margin-top: $arrow_position !important;
+    .arrow{
+      border-bottom:$arrow_size solid white;
+      left:50%;
+      bottom: -$arrow_size;
+      margin-left:-$arrow_size;
+      border-left:$arrow_size solid transparent;
+      border-right:$arrow_size solid transparent;
+    }
+  }
+
+  &.bs-tooltip-left{
+    margin-left: -$arrow_position !important;
+    .arrow{
+      border-left:$arrow_size solid white;
+      right:-$arrow_size;
+      margin-top:-$arrow_size;
+      border-top:$arrow_size solid transparent;
+      border-bottom:$arrow_size solid transparent;
+    }
+  }
+}
+
+/* OVERIDES COLORS */
+.fg-tooltip{
+  &.fg-tooltip-responsive,
+  &.fg-tooltip-default,
+  &.fg-tooltip-full{
+    /**
+      background
+     */
+    &.fg-background-color-secondary{
+      background-color: $secondary;
+    }
+    /**
+      color
+     */
+    &.fg-color-secondary{
+      color: $secondary;
+    }
+    &.fg-color-white{
+      color: white;
+    }
+    /**
+      border
+     */
+    &.fg-border-color-secondary{
+      border-color: $secondary;
+    }
+  }
+}

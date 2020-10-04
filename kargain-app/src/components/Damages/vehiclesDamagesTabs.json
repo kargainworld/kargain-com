@@ -1,0 +1,49 @@
+{
+    "car": [
+        {
+            "key": "outside-view",
+            "img": "/images/annotations-views/outside.png",
+            "maxDamages": 20
+        },
+        {
+            "key": "inside-view",
+            "img": "/images/annotations-views/inside.png"
+        },
+        {
+            "key": "front-face",
+            "img": "/images/annotations-views/front.png"
+        },
+        {
+            "key": "rear-face",
+            "img": "/images/annotations-views/rear.png"
+        },
+        {
+            "key": "left-side",
+            "img": "/images/annotations-views/side-left.png"
+        },
+        {
+            "key": "right-side",
+            "img": "/images/annotations-views/side-right.png"
+        },
+        {
+            "key": "mecanic",
+            "img": "/images/annotations-views/skeleton.png"
+        }
+    ],
+
+    "moto": [
+        {
+            "key": "outside-view",
+            "img": ",/images/annotations-views/outside.png",
+            "maxDamages": 20
+        },
+        {
+            "key": "inside-view",
+            "img": ",/images/annotations-views/inside.png"
+        },
+        {
+            "key": "front-face",
+            "img": "/images/annotations-views/front.png"
+        }
+    ]
+}

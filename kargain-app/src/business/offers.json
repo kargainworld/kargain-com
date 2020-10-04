@@ -1,0 +1,20 @@
+[
+    {
+        "maxAnnounces": 10,
+        "price": 49.9,
+        "nicePrice" : "49,9O€",
+        "title": "announces-10"
+    },
+    {
+        "maxAnnounces": 20,
+        "price": 99.9,
+        "nicePrice" : "99,9O€",
+        "title": "announces-20"
+    },
+    {
+        "maxAnnounces": 50,
+        "price": 199.9,
+        "nicePrice" : "199,9O€",
+        "title": "announces-100"
+    }
+]

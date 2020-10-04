@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+@mixin google-font($family) {
+    @import url("https://fonts.googleapis.com/css?family=#{$family}");
+}
+
+@include google-font("Droid Sans");
+@include google-font("Raleway");
+@include google-font("Quicksand:300,400,500,700");
+
+@import 'partials/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~react-step-progress-bar/styles.css';
+@import '~react-input-range/lib/css/index.css';
+@import "~react-image-gallery/styles/scss/image-gallery";
+@import '~react-dropzone-uploader/dist/styles.css';
+@import '~react-phone-input-2/lib/material.css';
+@import '~react-lazy-load-image-component/src/effects/blur.css';
+
+.react-tel-input .form-control + div:before{
+    content : none!important
+}
+
+@import 'partials/base';
+@import 'partials/navbar';
+@import "partials/content-filter";
+@import 'partials/loader';
+@import 'partials/nojs.-menu';
+@import 'partials/tooltip';
+@import 'partials/auth';
+@import 'partials/form';
+@import 'partials/announce';
+@import 'partials/comments';
+@import 'partials/flags-select';
+@import 'partials/profile';
+@import 'partials/avatar';
+@import 'partials/tabs';
+@import 'partials/footer_full';
+@import 'partials/legacy';
+@import 'partials/legacy-responsive';
+
+

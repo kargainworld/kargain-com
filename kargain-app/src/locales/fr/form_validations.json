@@ -1,0 +1,8 @@
+{
+    "required": "Champ requis",
+    "min_price_{min}{currency}": "Minimum {{min}}{{currency}}",
+    "max_price_{max}{currency}": "Maximum {{max}}{{currency}}",
+    "min_length_{min}": "Longueur minimum : {{min}} caractères",
+    "regexPwd{min}{max}": "Entre 4 et 16 caractères. Au moins 1 chiffre"
+}
+

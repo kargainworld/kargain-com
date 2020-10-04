@@ -1,0 +1,136 @@
+@import 'variables';
+
+.comments {
+    padding: .5rem;
+    overflow-y: auto;
+    max-height: 25rem;
+
+    .commentsCardList {
+        list-style-type: none;
+        margin: 1rem;
+    }
+
+    .profile-small {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #010312;
+        overflow: hidden;
+
+        .profile-small-infos {
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+
+            p {
+                font-size: 1rem;
+                margin-bottom: 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                color: #010312;
+
+                small {
+                    display: block;
+                    color: #8b8c93;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    .comments-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        h2, h3, h4 {
+            margin-right: auto;
+        }
+    }
+
+    .comments-mode a {
+        color: #cfd0d4;
+        margin-left: 10px;
+
+        &.active {
+            color: #010312;
+        }
+    }
+
+    .comments-list-preview {
+        max-height: 300px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 3px solid #777;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        content: "";
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(transparent 40px, white);
+        }
+
+        .comment-text {
+            background-color: #EEEEEE;
+            border-radius: 5px;
+            padding: .5rem;
+        }
+    }
+
+    .comments-list {
+        margin-top: 2rem;
+
+        .comment {
+            display: flex;
+            margin: .5rem;
+
+            .comment-picture {
+                margin: .5rem;
+
+                img {
+                    width: 40px;
+                    border-radius: 40px;
+                }
+            }
+
+            .comment-content {
+                width: 100%;
+            }
+
+            .comment-text {
+                background-color: #EEEEEE;
+                border-radius: 5px;
+                padding: .5rem;
+                margin: 1rem 0;
+            }
+        }
+    }
+
+    .comment-replies {
+        margin-left: -2rem;
+        border-left: 2px solid #f4f4f4;
+    }
+
+    .new-comment-reply {
+        margin-left: 2rem;
+    }
+
+    .inline-submit .form-submit {
+        z-index: 20;
+        padding: 5px;
+        position: absolute;
+        right: 0;
+        height: 100%;
+        bottom: 0;
+        color: #f42c04;
+        background-color: transparent;
+        border: none;
+    }
+}

@@ -1,0 +1,150 @@
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy:xy) {
+    @if $xy == xy {
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        right: auto;
+        @include transform(translateX(-50%) translateY(-50%));
+    } @else if $xy == x {
+        left: 50%;
+        right: auto;
+        @include transform(translateX(-50%));
+    } @else if $xy == y {
+        top: 50%;
+        bottom: auto;
+        @include transform(translateY(-50%));
+    }
+}
+
+// breakpoints
+
+$S: 480px;
+$M: 768px;
+$L: 1170px;
+
+// media queries
+
+@mixin MQ($canvas) {
+    @if $canvas == S {
+        @media only screen and (min-width: $S) {
+            @content;
+        }
+    } @else if $canvas == M {
+        @media only screen and (min-width: $M) {
+            @content;
+        }
+    } @else if $canvas == L {
+        @media only screen and (min-width: $L) {
+            @content;
+        }
+    }
+}
+
+// Browser Prefixes
+@mixin transform($transforms) {
+    -webkit-transform: $transforms;
+    -moz-transform: $transforms;
+    -ms-transform: $transforms;
+    transform: $transforms;
+}
+
+// Rotate
+@mixin rotate($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+// Scale
+@mixin scale($scale) {
+    @include transform(scale($scale));
+}
+
+// Translate
+@mixin translate($x, $y) {
+    @include transform(translate($x, $y));
+}
+
+// Skew
+@mixin skew($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// Transform Origin
+@mixin transform-origin($origin) {
+    -webkit-transform-origin: $origin;
+    -moz-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+@mixin rotate($angle) {
+    -moz-transform: rotate($angle);
+    -ms-transform: rotate($angle);
+    -webkit-transform: rotate($angle);
+    transform: rotate($angle);
+}
+
+@mixin arrow($arrowSize: 20px, $arrowBorderSize: 3px, $arrowBarWidth: 2px, $arrowBarHeight: 25px) {
+    display: inline-block;
+    height: calc(#{$arrowSize} + 2px);
+    position: relative;
+    width: $arrowSize;
+    transition: transform .2s;
+
+    &::after {
+        border-bottom-style: solid;
+        border-bottom-width: $arrowBorderSize;
+        border-right-style: solid;
+        border-right-width: $arrowBorderSize;
+        content: '';
+        display: inline-block;
+        height: $arrowSize;
+        width: $arrowSize;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    // Triangle shape state
+    &.is-triangle::after {
+        border-style: solid;
+        border-width: 0 0 $arrowSize $arrowSize;
+        height: 0;
+        width: 0;
+    }
+
+    // Check shape state
+    &.is-check::after {
+        width: $arrowSize / 2;
+    }
+
+    // Arrow Bar
+    &.arrow-bar::before {
+        bottom: 1px;
+        content: '';
+        height: $arrowBarHeight;
+        position: absolute;
+        right: 0;
+        transform-origin: bottom;
+        width: $arrowBarWidth;
+        @include rotate(-45deg);
+    }
+
+    // States
+    &.is-top {
+        @include rotate(225deg);
+    }
+
+    &.is-right {
+        @include rotate(315deg);
+    }
+
+    &.is-bottom {
+        @include rotate(45deg);
+    }
+
+    &.is-left {
+        @include rotate(135deg);
+    }
+}

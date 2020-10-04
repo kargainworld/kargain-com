@@ -1,0 +1,51 @@
+@import 'variables';
+
+.circle_loader {
+  display: block;
+  text-align: center;
+
+  .circle {
+    position: relative;
+    left: -30px;
+    fill: transparent;
+    stroke: rgba(0,0,0,0.2);
+    stroke-width: 4px;
+    animation: dash 2s ease infinite, rotate 2s linear infinite;
+  }
+}
+
+.circle_loader_fullscreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  z-index: 100;
+  text-align: center;
+  transform: translate(-50%, -50%);
+
+  .circle {
+    fill: transparent;
+    stroke: rgba(0,0,0,0.2);
+    stroke-width: 4px;
+    animation: dash 2s ease infinite, rotate 2s linear infinite;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,95;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 85,95;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dasharray: 85,95;
+    stroke-dashoffset: -93;
+  }
+}
+@keyframes rotate {
+  0% {transform: rotate(0deg); }
+  100% {transform: rotate(360deg); }
+}

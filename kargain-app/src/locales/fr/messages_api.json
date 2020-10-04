@@ -1,0 +1,19 @@
+{
+    "invalid_token": "Token invalide",
+    "unknown_user": "Utilisateur inconnu",
+    "missing_password": "Mot de passe manquant",
+    "missing_or_invalid_email": "Email manquant ou invalide",
+    "password_not_valid": "mot de passe incorrect ou invalide",
+    "passwords_not_matching": "Les mot de passe ne correspondent pas",
+    "user_not_found": "utilisateur inexistant",
+    "announce_not_found": "announce inexistante",
+    "comment_is_empty": "le commentaire ne peut pas être vide",
+    "comment_not_found": "commentaire inexistant",
+    "message_not_found": "message inexistant",
+    "response_not_found": "reponse inexistante",
+    "missing_offer": "annonce inexistante",
+    "missing_vehicle_model": "model de vehicle manquant",
+    "missing_vehicle_make": "marque de vehicle manquant",
+
+    "not_allowed" : "Non autorisé"
+}
