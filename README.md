@@ -45,7 +45,7 @@ $ cd ~/
 ```
 $ yarn install
 ```
-4. And start product in kargain-api/
+4. And start product in *kargain-api/*
 ```
 $ yarn start:prod
 ```
