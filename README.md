@@ -27,7 +27,7 @@ The subscription to the Kargain platform will be paid for professional actors, a
 
 ## Technologies
 * NextJS
-* ReactJS
+* NodeJS
 * MongoDB
 * check a package.json ...
 
@@ -35,8 +35,8 @@ The subscription to the Kargain platform will be paid for professional actors, a
 ## Development
 How to start working on kargain.com production
 
-1. Fork this repo
-2. Clone your fork
+1. Fork each repo: kargainworld/kargain-app & kargainworld/kargain-api
+2. Clone your forks
 ```
 $ clone git
 $ cd ~/
@@ -45,10 +45,12 @@ $ cd ~/
 ```
 $ yarn install
 ```
-4. And start product
+4. And start product in kargain-api/
 ```
 $ yarn start:prod
 ```
+👽 Now Kargain running on your local machine. You can make changes and send us to improve the site.
+
 ### Submit an issue
  * Creat a new issue
  * Comment on the issue
