@@ -39,4 +39,4 @@ export default {
     'paint.value': 'PAINT',
     'externalColor.value': 'EXTERNAL_COLOR',
     'internalColor.value': 'INTERNAL_COLOR'
-};
+}

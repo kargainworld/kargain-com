@@ -1,7 +1,7 @@
-import React, {   useState } from 'react';
+import React, {   useState } from 'react'
 import {  Container } from 'reactstrap'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import AdvancedFilters from './AdvancedFilters';
+import AdvancedFilters from './AdvancedFilters'
 import vehicleTypes from '../../../business/vehicleTypes.js'
 import Tabs from '../../Tabs/Tabs'
 import clsx from 'clsx'

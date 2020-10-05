@@ -4,15 +4,15 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import useTranslation from 'next-translate/useTranslation'
 import MenuIcon from '@material-ui/icons/Menu'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import { fade, makeStyles } from '@material-ui/core/styles'
 import {AppBar,  MenuItem, Menu, IconButton, Toolbar} from "@material-ui/core"
 import Typography from '@material-ui/core/Typography'
 import theme from '../../../theme'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { useAuth } from '../../../context/AuthProvider'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -88,36 +88,36 @@ const useStyles = makeStyles((theme) => ({
             display: 'none'
         }
     }
-}));
+}))
 
 const TopBar = ({handleDrawerToggle, open, ...props}) => {
-    const classes = useStyles();
-    const { t } = useTranslation();
-    const {className, onClickTogglerNav, ...rest} = props;
-    const { logout } = useAuth();
-    const menuId = 'primary-search-account-menu';
-    const mobileMenuId = 'primary-search-account-menu-mobile';
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const classes = useStyles()
+    const { t } = useTranslation()
+    const {className, onClickTogglerNav, ...rest} = props
+    const { logout } = useAuth()
+    const menuId = 'primary-search-account-menu'
+    const mobileMenuId = 'primary-search-account-menu-mobile'
+    const [anchorEl, setAnchorEl] = React.useState(null)
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
+    const isMenuOpen = Boolean(anchorEl)
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
     const handleProfileMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
+        setAnchorEl(event.currentTarget)
+    }
 
     const handleMobileMenuClose = () => {
-        setMobileMoreAnchorEl(null);
-    };
+        setMobileMoreAnchorEl(null)
+    }
 
     const handleMenuClose = () => {
-        setAnchorEl(null);
-        handleMobileMenuClose();
-    };
+        setAnchorEl(null)
+        handleMobileMenuClose()
+    }
 
     const handleMobileMenuOpen = (event) => {
-        setMobileMoreAnchorEl(event.currentTarget);
-    };
+        setMobileMoreAnchorEl(event.currentTarget)
+    }
 
     const renderMenu = (
         <Menu
@@ -152,7 +152,7 @@ const TopBar = ({handleDrawerToggle, open, ...props}) => {
                 </Link>
             </MenuItem>
         </Menu>
-    );
+    )
 
     const renderMobileMenu = (
         <Menu
@@ -198,7 +198,7 @@ const TopBar = ({handleDrawerToggle, open, ...props}) => {
                 </Link>
             </MenuItem>
         </Menu>
-    );
+    )
 
     return (
         <>
@@ -269,12 +269,12 @@ const TopBar = ({handleDrawerToggle, open, ...props}) => {
             {renderMobileMenu}
             {renderMenu}
         </>
-    );
-};
+    )
+}
 
 TopBar.propTypes = {
     className: PropTypes.string,
     onSidebarOpen: PropTypes.func
-};
+}
 
-export default TopBar;
+export default TopBar

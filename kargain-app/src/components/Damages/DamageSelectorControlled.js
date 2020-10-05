@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import toggleVehicleDamagesTabs from './ToggleVehicleDamagesTabs'
 import DamageSelectorTabs from './DamageSelectorTabs'
 import vehiclesDamagesTabs from './vehiclesDamagesTabs.json'
@@ -8,18 +8,18 @@ const DamageSelectorControlled = ({vehicleType, name, control, defaultValues, se
     const [tabs, setTabs ] = useState([])
 
     useEffect(() => {
-        const vehicleTabs = vehiclesDamagesTabs[vehicleType];
+        const vehicleTabs = vehiclesDamagesTabs[vehicleType]
         const preparedTabs = toggleVehicleDamagesTabs(vehicleType, vehicleTabs)
             .map((tab, index) => ({
                 ...tab,
                 stages: defaultValues?.[index]?.stages ?? []
             }))
         setTabs(preparedTabs)
-    }, []);
+    }, [])
     
     useEffect(()=>{
-        control.register({ name });
-        control.setValue(name, tabs);
+        control.register({ name })
+        control.setValue(name, tabs)
     },[tabs])
     
     return (
@@ -28,11 +28,11 @@ const DamageSelectorControlled = ({vehicleType, name, control, defaultValues, se
             selectorFullWidth={selectorFullWidth}
             defaultMaxDamages={5}
             fireChanges={damages => {
-                control.setValue('damages', damages);
+                control.setValue('damages', damages)
             }}
         />
-    );
-};
+    )
+}
 
 DamageSelectorControlled.propTypes = {
     name : PropTypes.string.isRequired,
@@ -45,10 +45,10 @@ DamageSelectorControlled.propTypes = {
     })),
     onDamagesChange: PropTypes.func,
     selectorFullWidth : PropTypes.bool
-};
+}
 
 DamageSelectorControlled.defaultProps = {
     vehicleType : 'car'
 }
 
-export default DamageSelectorControlled;
+export default DamageSelectorControlled

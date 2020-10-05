@@ -1,7 +1,7 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import ValidationError from '../Validations/ValidationError';
+import React from 'react'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import ValidationError from '../Validations/ValidationError'
 
 const TextInput = ({ name, rules, control, errors, defaultValue, ...props }) => {
 
@@ -20,16 +20,16 @@ const TextInput = ({ name, rules, control, errors, defaultValue, ...props }) => 
             </div>
             {errors && <ValidationError errors={errors} name={name}/>}
         </>
-    );
-};
+    )
+}
 
 TextInput.propTypes = {
     name: PropTypes.string,
     disabled : PropTypes.bool
-};
+}
 
 TextInput.defaultProps = {
-    rules: {},
-};
+    rules: {}
+}
 
-export default TextInput;
+export default TextInput

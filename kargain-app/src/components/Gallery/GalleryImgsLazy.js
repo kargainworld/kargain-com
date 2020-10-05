@@ -1,8 +1,8 @@
-import React from 'react';
-import clsx from 'clsx';
-import { Col } from 'reactstrap';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { makeStyles } from '@material-ui/styles';
+import React from 'react'
+import clsx from 'clsx'
+import { Col } from 'reactstrap'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(() => ({
     gallery: {
@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
         height: '600px',
         position: 'relative',
         borderRadius: '5px',
-        overflow: 'hidden',
+        overflow: 'hidden'
     },
 
     galleryImg: {
@@ -22,12 +22,12 @@ const useStyles = makeStyles(() => ({
     galleryImgSrc: {
         animation: 'fadeIn 1s',
         width: '100%',
-        objectFit: 'contain',
-    },
-}));
+        objectFit: 'contain'
+    }
+}))
 
 const GalleryImgsLazy = ({ images, handleCLickImg }) => {
-    const classes = useStyles();
+    const classes = useStyles()
     return (
         <div className="m-2 m-auto p-2">
             <div className="row">
@@ -46,11 +46,11 @@ const GalleryImgsLazy = ({ images, handleCLickImg }) => {
                                 </div>
                             </div>
                         </Col>
-                    );
+                    )
                 })}
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default GalleryImgsLazy;
+export default GalleryImgsLazy

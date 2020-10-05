@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { MessageContext } from '../../../../context/MessageContext';
-import AnnounceService from '../../../../services/AnnounceService';
-import NiceSelect, { components } from 'react-select';
-import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
-import CloseIcon from '@material-ui/icons/Close';
-import BulletPoint from '../../../BulletPoint';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import BooleanBullet from '../../BooleanBullet';
+import React, { useContext, useState } from 'react'
+import { MessageContext } from '../../../../context/MessageContext'
+import AnnounceService from '../../../../services/AnnounceService'
+import NiceSelect, { components } from 'react-select'
+import Button from '@material-ui/core/Button'
+import SaveIcon from '@material-ui/icons/Save'
+import CloseIcon from '@material-ui/icons/Close'
+import BulletPoint from '../../../BulletPoint'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import BooleanBullet from '../../BooleanBullet'
 
 const useStyles = makeStyles((theme) => ({
     editSelectPop: {
@@ -17,31 +17,31 @@ const useStyles = makeStyles((theme) => ({
         border: '1px solid gainsboro',
         backgroundColor: 'antiquewhite'
     }
-}));
+}))
 
-const { Option } = components;
+const { Option } = components
 const CustomSelectOption = (props) => {
     return (
         <Option {...props} className="d-flex align-items-center">
             {props.data.icon && props.data.icon}
             {props.data.label}
         </Option>
-    );
-};
+    )
+}
 
 const CustomSelectValue = (props) => (
     <div className="d-flex align-items-center">
         {props.data.icon && props.data.icon}
         {props.data.label}
     </div>
-);
+)
 
 const VisibleBullet = ({ slug, visible: visibleProps }) => {
-    const classes = useStyles();
-    const [visible, setVisible] = useState(visibleProps);
-    const [clicked, setClicked] = useState(false);
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const classes = useStyles()
+    const [visible, setVisible] = useState(visibleProps)
+    const [clicked, setClicked] = useState(false)
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
+    const [selectedOption, setSelectedOption] = useState(null)
     const options = [
         {
             label: 'Visible',
@@ -56,19 +56,19 @@ const VisibleBullet = ({ slug, visible: visibleProps }) => {
     ].map(option => ({
         ...option,
         icon: <BulletPoint color={option.color}/>
-    }));
+    }))
 
     const handleUpdate = async () => {
         try {
             await AnnounceService.updateAdminAnnounce(slug, {
                 visible: selectedOption
-            });
-            setVisible(visible => !visible);
-            dispatchModal({ msg: 'updated' });
+            })
+            setVisible(visible => !visible)
+            dispatchModal({ msg: 'updated' })
         } catch (err) {
-            dispatchModalError({ err });
+            dispatchModalError({ err })
         }
-    };
+    }
 
     return (
         <div className="edit">
@@ -86,15 +86,15 @@ const VisibleBullet = ({ slug, visible: visibleProps }) => {
                     <Button
                         startIcon={<CloseIcon/>}
                         onClick={() => {
-                            setSelectedOption(null);
-                            setClicked(false);
+                            setSelectedOption(null)
+                            setClicked(false)
                         }}
                     />
                     <Button
                         startIcon={<SaveIcon/>}
                         onClick={async () => {
-                            setClicked(false);
-                            await handleUpdate();
+                            setClicked(false)
+                            await handleUpdate()
                         }}
                     />
                 </div>
@@ -105,7 +105,7 @@ const VisibleBullet = ({ slug, visible: visibleProps }) => {
                 />
             )}
         </div>
-    );
-};
+    )
+}
 
-export default VisibleBullet;
+export default VisibleBullet

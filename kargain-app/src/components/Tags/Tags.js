@@ -1,43 +1,43 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import TagsList from './TagsList';
+import React, { useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
+import TagsList from './TagsList'
 
 const Tags = ({ defaultTags, onChange: fireTags }) => {
-    const tagInput = useRef();
-    const [tags, setTags] = useState(defaultTags);
+    const tagInput = useRef()
+    const [tags, setTags] = useState(defaultTags)
 
     const removeTag = (i) => {
-        const newTags = [...tags];
-        newTags.splice(i, 1);
-        setTags(newTags);
-    };
+        const newTags = [...tags]
+        newTags.splice(i, 1)
+        setTags(newTags)
+    }
 
     const inputKeyDown = (e) => {
-        const val = e.target.value;
+        const val = e.target.value
 
         if (e.key === 'Enter') {
-            e.preventDefault();
-            e.stopPropagation();
+            e.preventDefault()
+            e.stopPropagation()
         }
 
         if (e.key === 'Enter' && val) {
             if (tags.find(tag => tag.toLowerCase() === val.toLowerCase())) {
-                return;
+                return
             }
-            setTags([...tags, val]);
-            tagInput.current.value = null;
+            setTags([...tags, val])
+            tagInput.current.value = null
         } else if (e.key === 'Backspace' && !val) {
-            removeTag(tags.length - 1);
+            removeTag(tags.length - 1)
         }
-    };
+    }
 
     useEffect(() => {
-        setTags(defaultTags);
-    }, [defaultTags]);
+        setTags(defaultTags)
+    }, [defaultTags])
 
     useEffect(() => {
-        fireTags(tags);
-    }, [tags]);
+        fireTags(tags)
+    }, [tags])
 
     return (
         <div>
@@ -57,17 +57,17 @@ const Tags = ({ defaultTags, onChange: fireTags }) => {
                 />
             </div>
         </div>
-    );
-};
+    )
+}
 
 Tags.propTypes = {
     onChange: PropTypes.func.isRequired,
     defaultTags: PropTypes.arrayOf(PropTypes.string),
     maxTags: PropTypes.number
-};
+}
 
 Tags.defaultProps = {
     // fireTags: () => {},
     defaultTags: []
-};
-export default Tags;
+}
+export default Tags

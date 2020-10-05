@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import withGA from 'next-ga'
@@ -29,20 +28,16 @@ import SEO from '../../next-seo.config'
 
 const MyApp = ({ Component, pageProps }) => {
     const { formKey } = pageProps
-    
+
     useEffect(() => {
         const jssStyles = document.querySelector('#jss-server-side')
         if (jssStyles && jssStyles.parentNode) {
             jssStyles.parentNode.removeChild(jssStyles)
         }
     }, [])
-    
+
     return (
         <>
-            <Head>
-                <meta name="viewport" content="viewport-fit=cover" />
-                <title>Kargain</title>
-            </Head>
             <ThemeProvider theme={theme}>
                 <MessageContextProvider>
                     <AuthProvider>
@@ -70,16 +65,16 @@ const ProtectedRouter = ({ children, pageProps }) => {
     const isAdminRoute = router.route.split('/').includes('admin')
     const { isAuthReady, forceLoginModal, isAuthenticated, isAuthenticatedUserAdmin } = useAuth()
     const showLoginModal = (requiredAuth && !isAuthenticated) || forceLoginModal
-    const { searchStateContext }  = useContext(SearchContext)
+    const { searchStateContext } = useContext(SearchContext)
     const { modalStateContext } = useContext(ModalContext)
-    
+
     if (isAdminRoute) {
         if (isAuthReady) {
             if (!isAuthenticatedUserAdmin) {
                 return <Forbidden403Page/>
             }
         }
-        
+
         return (
             <AdminLayout>
                 <PopupAlert/>
@@ -87,7 +82,7 @@ const ProtectedRouter = ({ children, pageProps }) => {
             </AdminLayout>
         )
     }
-    
+
     return (
         <DynamicNamespaces
             dynamic={(lang, ns) => import(`../locales/${lang}/${ns}.json`).then((m) => m.default)}
@@ -102,7 +97,7 @@ const ProtectedRouter = ({ children, pageProps }) => {
             {modalStateContext.openModalMessaging && <ModalMessaging/>}
             {modalStateContext.openModalFollowers && <ModalFollowers/>}
             {modalStateContext.openModalShare && <ModalShare/>}
-    
+
             <Layout>
                 <PopupAlert/>
                 {children}

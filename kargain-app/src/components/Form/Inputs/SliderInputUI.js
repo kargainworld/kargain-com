@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Slider from '@material-ui/core/Slider';
-import Tooltip from '@material-ui/core/Tooltip';
-import ValidationError from '../Validations/ValidationError';
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import Slider from '@material-ui/core/Slider'
+import Tooltip from '@material-ui/core/Tooltip'
+import ValidationError from '../Validations/ValidationError'
 
 const CustomSlider = withStyles({
     root: {
@@ -34,11 +34,11 @@ const CustomSlider = withStyles({
         height: 8,
         borderRadius: 4
     }
-})(Slider);
+})(Slider)
 
 const ValueLabelComponent = ({ suffix, ...innerProps }) => {
-    const { children, open, value } = innerProps;
-    const title = suffix ? `${value} ${suffix}` : value;
+    const { children, open, value } = innerProps
+    const title = suffix ? `${value} ${suffix}` : value
 
     if(value){
         return (
@@ -49,7 +49,7 @@ const ValueLabelComponent = ({ suffix, ...innerProps }) => {
                 title={title}>
                 {children}
             </Tooltip>
-        );
+        )
     }
     return null
 }
@@ -58,16 +58,16 @@ ValueLabelComponent.propTypes = {
     children: PropTypes.element,
     open: PropTypes.bool.isRequired,
     value: PropTypes.number.isRequired
-};
+}
 
 const RangeSlider = ({ name, rules, control, errors, ...props }) => {
-    const InputClasses = clsx('input-field', props.fullwidth && 'w-100', props.classNames);
-    const [value, setValue] = useState(props.defaultValue || props.max);
+    const InputClasses = clsx('input-field', props.fullwidth && 'w-100', props.classNames)
+    const [value, setValue] = useState(props.defaultValue || props.max)
 
     const handleChange = (e, val) => {
-        setValue(val);
+        setValue(val)
         control.setValue(name, value)
-    };
+    }
 
     useEffect(()=>{
         control.register(name, rules)
@@ -93,8 +93,8 @@ const RangeSlider = ({ name, rules, control, errors, ...props }) => {
             </div>
             {errors && <ValidationError errors={errors} name={name}/>}
         </>
-    );
-};
+    )
+}
 
 RangeSlider.propTypes = {
     name: PropTypes.string.isRequired,
@@ -102,7 +102,7 @@ RangeSlider.propTypes = {
     step: PropTypes.number,
     max: PropTypes.number,
     valueLabelDisplay: PropTypes.string
-};
+}
 
 RangeSlider.defaultProps = {
     rules: {},
@@ -110,6 +110,6 @@ RangeSlider.defaultProps = {
     max: 100,
     step: 10,
     valueLabelDisplay : 'auto' //on
-};
+}
 
-export default React.memo(RangeSlider);
+export default React.memo(RangeSlider)

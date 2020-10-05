@@ -13,11 +13,14 @@ import SSOProviders from '../../components/SSOProviders'
 import CTAButton from '../../components/CTAButton'
 import AuthService from '../../services/AuthService'
 import { useAuth } from '../../context/AuthProvider'
+import UserModel from '../../models/user.model'
 
 export default ({ forceLogout }) => {
     const router = useRouter()
     const { logout } = useAuth()
     const { t } = useTranslation()
+    const { initializeAuth } = useAuth()
+
     const { redirect } = router.query
     const { dispatchModalError } = useContext(MessageContext)
     const { control, errors, handleSubmit } = useForm({
@@ -29,28 +32,30 @@ export default ({ forceLogout }) => {
         if (forceLogout) logout()
     }, [])
 
-    const onSubmit = (form) => {
+    const onSubmit = async (form) => {
         const { email, password } = form
-        AuthService.login({
-            email,
-            password
-        })
-            .then(user => {
-                if (redirect) {
-                    router.push(`/auth/callback?redirect=${redirect}`)
+        try{
+            const user = await AuthService.login({
+                email,
+                password
+            })
+            await initializeAuth()
+            const User = new UserModel(user)
+            if (redirect) {
+                router.push(`/auth/callback?redirect=${redirect}`)
+            } else {
+                const isAdmin = User.getIsAdmin
+                if (isAdmin) {
+                    router.push(`/auth/callback?redirect=/admin`)
                 } else {
-                    const isAdmin = user.isAdmin
-                    if (isAdmin) {
-                        router.push(`/auth/callback?redirect=/admin`)
-                    } else {
-                        router.push(`/auth/callback?redirect=/profile/${user.username}`)
-                    }
+                    router.push(`/auth/callback?redirect=/profile/${User.getUsername}`)
                 }
-            }).catch(err => {
-                dispatchModalError({ err })
-                if (redirect) router.push({ pathname: redirect })
             }
-            )
+        }
+        catch (err){
+            dispatchModalError({ err })
+            if (redirect) router.push({ pathname: redirect })
+        }
     }
 
     return (

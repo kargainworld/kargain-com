@@ -1,10 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Controller } from 'react-hook-form';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import ValidationError from '../Validations/ValidationError';
+import React from 'react'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import { Controller } from 'react-hook-form'
+import Checkbox from '@material-ui/core/Checkbox'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import ValidationError from '../Validations/ValidationError'
 
 const CheckboxMUI = ({ name, rules, control, errors, ...props }) => {
     return (
@@ -26,11 +26,11 @@ const CheckboxMUI = ({ name, rules, control, errors, ...props }) => {
             </div>
             {errors && <ValidationError errors={errors} name={name}/>}
         </>
-    );
-};
+    )
+}
 
 CheckboxMUI.propTypes = {
-    control: PropTypes.any.isRequired,
-};
+    control: PropTypes.any.isRequired
+}
 
-export default CheckboxMUI;
+export default CheckboxMUI

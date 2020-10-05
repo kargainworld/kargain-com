@@ -41,5 +41,7 @@
   "send" : "Send",
   "email_had_been_sent_to_{email}" : "An email had been sent to {{email}}",
   "copy_link" : "Copy link",
-  "copy_link_copied" : "Copy link (copied)"
+  "copy_link_copied" : "Copy link (copied)",
+  "announces" : "Announces",
+  "members" : "Members"
 }

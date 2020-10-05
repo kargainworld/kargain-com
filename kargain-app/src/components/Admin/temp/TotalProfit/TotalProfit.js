@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import {Avatar, Card, CardContent, Grid, Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/styles";
+import React from "react"
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import {Avatar, Card, CardContent, Grid, Typography} from "@material-ui/core"
+import {makeStyles} from "@material-ui/styles"
 
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -29,13 +29,13 @@ const useStyles = makeStyles(theme => ({
         height: 32,
         width: 32
     }
-}));
+}))
 
 const TotalProfit = props => {
 
-    const {className, ...rest} = props;
+    const {className, ...rest} = props
 
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (
         <Card
@@ -69,10 +69,10 @@ const TotalProfit = props => {
             </CardContent>
         </Card>
     )
-};
+}
 
 TotalProfit.propTypes = {
     className: PropTypes.string
-};
+}
 
-export default TotalProfit;
+export default TotalProfit

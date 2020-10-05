@@ -1,7 +1,7 @@
 import  React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form'
 import NiceSelect from 'react-select'
 import ValidationError from '../Validations/ValidationError'
 
@@ -37,7 +37,7 @@ const customStyles = {
 const SelectInput = ({ name, control, rules, errors, ...props }) => {
     const { options, selected } = props
     let defaultValues = null
-    let selectedOptions = selected;
+    let selectedOptions = selected
     if (selectedOptions) {
         if (!Array.isArray(selectedOptions)) selectedOptions = [selectedOptions]
         defaultValues = selectedOptions.reduce((carry, selected) =>

@@ -35,31 +35,31 @@ router.post('/dyn/:vehicleType/models',
 
 // type : ["cars", "buses", "scooters", "campers", "motorcycles", "trucks"];
 router.get('/dyn/:vehicleType/makes',
-    cors(corsMiddleware.clientCors),
+    corsMiddleware.manualCors,
     vehicleController.getVehicleTypeMakes
 )
 
 //query : { make : String }
 router.get('/dyn/:vehicleType/models',
-    cors(corsMiddleware.clientCors),
+    corsMiddleware.manualCors,
     vehicleController.getVehicleTypeMakeModels
 )
 
 //query : { make : String }
 router.get('/cars/distinct/make/models',
-    cors(corsMiddleware.clientCors),
+    corsMiddleware.manualCors,
     vehicleController.getCarsMakeModels
 )
 
 //query : { make : String, model : String }
 router.get('/cars/distinct/make/model/trims',
-    cors(corsMiddleware.clientCors),
+    corsMiddleware.manualCors,
     vehicleController.getCarsMakeModelTrims
 )
 
 //query : { make : String, model : String, (trim : String) }
 router.get('/cars/make/model/trim/years',
-    cors(corsMiddleware.clientCors),
+    corsMiddleware.manualCors,
     vehicleController.getCarsMakeModelTrimYears
 )
 

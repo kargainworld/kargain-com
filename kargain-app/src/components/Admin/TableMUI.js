@@ -1,11 +1,11 @@
-import React, { forwardRef} from 'react';
+import React, { forwardRef} from 'react'
 import dynamic from 'next/dynamic'
-import PropTypes from 'prop-types';
-import SearchIcon from '@material-ui/icons/Search';
-import FilterList from '@material-ui/icons/FilterList';
+import PropTypes from 'prop-types'
+import SearchIcon from '@material-ui/icons/Search'
+import FilterList from '@material-ui/icons/FilterList'
 
 const TableMUI = ({ columns, data, title, ...props }) => {
-    const MaterialTable = dynamic(() => import("material-table"), { ssr: false });
+    const MaterialTable = dynamic(() => import("material-table"), { ssr: false })
 
     return (
         <MaterialTable
@@ -56,8 +56,8 @@ const TableMUI = ({ columns, data, title, ...props }) => {
                 // actionsColumnIndex: -1
             }}
         />
-    );
-};
+    )
+}
 
 TableMUI.propTypes = {
     columns: PropTypes.array.isRequired,
@@ -68,7 +68,7 @@ TableMUI.propTypes = {
     grouping: PropTypes.bool,
     exportButton: PropTypes.bool,
     tableLength: PropTypes.number
-};
+}
 
 TableMUI.defaultProps = {
     search: true,
@@ -78,6 +78,6 @@ TableMUI.defaultProps = {
     exportButton: true,
     tableLength: 15,
     exportFileName: 'export_data_sci'
-};
+}
 
-export default TableMUI;
+export default TableMUI

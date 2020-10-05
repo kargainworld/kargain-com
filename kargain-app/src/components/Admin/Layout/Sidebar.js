@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import {makeStyles} from "@material-ui/styles";
-import { Drawer} from "@material-ui/core";
-import BarChartIcon from '@material-ui/icons/BarChart';
-import HomeIcon from '@material-ui/icons/Home';
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import CommuteIcon from '@material-ui/icons/Commute';
+import React from "react"
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import {makeStyles} from "@material-ui/styles"
+import { Drawer} from "@material-ui/core"
+import BarChartIcon from '@material-ui/icons/BarChart'
+import HomeIcon from '@material-ui/icons/Home'
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt'
+import CommuteIcon from '@material-ui/icons/Commute'
 
-import SidebarNav from "./SidebarNav";
+import SidebarNav from "./SidebarNav"
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
     drawer: {
@@ -53,11 +53,11 @@ const useStyles = makeStyles(theme => ({
     nav: {
         marginBottom: theme.spacing(2)
     }
-}));
+}))
 
 const Sidebar = props => {
-    const {open, variant, onClose, className} = props;
-    const classes = useStyles();
+    const {open, variant, onClose, className} = props
+    const classes = useStyles()
     const pages = [
         {
             title: 'Retour Kargain',
@@ -79,7 +79,7 @@ const Sidebar = props => {
             href: '/admin/users',
             icon : <PeopleAltIcon/>
         }
-    ];
+    ]
 
     return (
         <Drawer
@@ -103,14 +103,14 @@ const Sidebar = props => {
                 pages={pages}
             />
         </Drawer>
-    );
-};
+    )
+}
 
 Sidebar.propTypes = {
     className: PropTypes.string,
     onClose: PropTypes.func,
     open: PropTypes.bool.isRequired,
     variant: PropTypes.string.isRequired
-};
+}
 
-export default Sidebar;
+export default Sidebar

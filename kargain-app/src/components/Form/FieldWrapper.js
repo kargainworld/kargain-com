@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import clsx from 'clsx'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles(() => ({
     label: {
@@ -18,7 +18,7 @@ const FieldWrapper = ({ isRow, children, ...props }) => {
     const { required } = rules || {}
     const classes = useStyles()
 
-    if(!children) return null;
+    if(!children) return null
 
     return (
         <div className={clsx(isRow && 'row align-items-center', 'FieldWrapper m-2')}>

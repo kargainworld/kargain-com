@@ -12,9 +12,7 @@
 		"build": "rimraf dist && babel src -d dist",
 		"prod": "cross-env NODE_ENV=production yarn run build && nodemon dist",
 		"deploy": "yarn run build && vercel --prod",
-		"eslint": "eslint ./src",
-		"eslint-fix": "eslint ./src --fix",
-		"precommit": "lint-staged"
+		"eslint": "eslint --fix src"
 	},
 	"dependencies": {
 		"@sindresorhus/slugify": "^1.1.0",

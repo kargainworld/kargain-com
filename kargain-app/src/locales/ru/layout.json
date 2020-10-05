@@ -39,5 +39,7 @@
     "see-announce" : "Просмотреть обьявление",
     "email_had_been_sent_to_{email}" : "\nПисьмо было отправлено на адрес {{email}}",
     "copy_link" : "Копировать ссылку",
-    "copy_link_copied" : "Копировать ссылку (скопировано)"
+    "copy_link_copied" : "Копировать ссылку (скопировано)",
+    "announces" : "Объявляет",
+    "members" : "Члены"
 }

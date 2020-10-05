@@ -1,44 +1,44 @@
-import React, { useContext } from 'react';
-import { Col, Container, Row } from 'reactstrap';
-import { useForm } from 'react-hook-form';
-import useTranslation from 'next-translate/useTranslation';
-import Typography from '@material-ui/core/Typography';
-import AuthService from '../../services/AuthService';
-import { MessageContext } from '../../context/MessageContext';
+import React, { useContext } from 'react'
+import { Col, Container, Row } from 'reactstrap'
+import { useForm } from 'react-hook-form'
+import useTranslation from 'next-translate/useTranslation'
+import Typography from '@material-ui/core/Typography'
+import AuthService from '../../services/AuthService'
+import { MessageContext } from '../../context/MessageContext'
 import TextInput from '../../components/Form/Inputs/TextInput'
 import EmailInput from '../../components/Form/Inputs/EmailInput'
 import CheckBoxInput from '../../components/Form/Inputs/CheckBoxInput'
 import PasswordInput from '../../components/Form/Inputs/PasswordInput'
 import SelectCountryFlags from '../../components/Form/Inputs/SelectCountryFlags'
 import SearchLocationInput from '../../components/Form/Inputs/SearchLocationInput'
-import FieldWrapper from '../../components/Form/FieldWrapper';
-import SSOProviders from '../../components/SSOProviders';
+import FieldWrapper from '../../components/Form/FieldWrapper'
+import SSOProviders from '../../components/SSOProviders'
 
 const formConfig = {
     mode: 'onChange',
     validateCriteriaMode: 'all'
-};
+}
 
 const RegisterPro = () => {
-    const { control, errors, getValues, watch, handleSubmit} = useForm(formConfig);
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
-    const { t } = useTranslation();
+    const { control, errors, getValues, watch, handleSubmit} = useForm(formConfig)
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
+    const { t } = useTranslation()
 
     const onSubmit = (form) => {
         // eslint-disable-next-line unused-imports/no-unused-vars
-        const { confirm, confirmPwd, ...data } = form;
+        const { confirm, confirmPwd, ...data } = form
         AuthService.registerPro(data)
             .then(() => {
                 dispatchModal({
                     persist: true,
                     msg: t('layout:account_created')
-                });
+                })
             }).catch(err => {
-                dispatchModalError({ err });
-            });
-    };
+                dispatchModalError({ err })
+            })
+    }
 
-    const countrySelect = watch('countrySelect');
+    const countrySelect = watch('countrySelect')
 
     return (
         <Container>
@@ -146,7 +146,7 @@ const RegisterPro = () => {
                                     required: t('form_validations:required'),
                                     validate: {
                                         matchesPreviousPassword: (value) => {
-                                            const { password } = getValues();
+                                            const { password } = getValues()
                                             return password === value || t('form_validations:form_validations')
                                         }
                                     }
@@ -167,7 +167,7 @@ const RegisterPro = () => {
                 </Col>
             </Row>
         </Container>
-    );
-};
+    )
+}
 
-export default RegisterPro;
+export default RegisterPro

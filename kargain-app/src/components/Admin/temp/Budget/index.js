@@ -1,1 +1,1 @@
-export {default} from './Budget';
+export {default} from './Budget'

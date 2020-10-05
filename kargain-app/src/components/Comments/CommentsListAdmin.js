@@ -1,38 +1,38 @@
 import React, {  useContext } from 'react'
-import PropTypes from 'prop-types';
-import Link from 'next-translate/Link';
-import useTranslation from 'next-translate/useTranslation';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import PropTypes from 'prop-types'
+import Link from 'next-translate/Link'
+import useTranslation from 'next-translate/useTranslation'
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography';
-import { Table } from 'reactstrap';
+import Typography from '@material-ui/core/Typography'
+import { Table } from 'reactstrap'
 import { MessageContext } from '../../context/MessageContext'
 import CommentsService from '../../services/CommentsService'
 import CommentEnableBullet from '../Admin/Ads/components/CommentEnableBullet'
 
 const CommentsList = ({ comments }) => {
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
     
     const handleEnableComment = (commentID) => {
         CommentsService.enableComment(commentID)
             .then(() => {
-                dispatchModal({ msg: 'Comment successfully enabled' });
+                dispatchModal({ msg: 'Comment successfully enabled' })
             }).catch(err => {
-                dispatchModalError({ err });
-            });
-    };
+                dispatchModalError({ err })
+            })
+    }
     
     const handleDisableComment = (commentID) => {
         return CommentsService.disableComment(commentID)
             .then(() => {
-                dispatchModal({ msg: 'Comment successfully disabled' });
+                dispatchModal({ msg: 'Comment successfully disabled' })
             }).catch(err => {
-                dispatchModalError({ err });
-            });
-    };
+                dispatchModalError({ err })
+            })
+    }
     
     return (
         <div className="comments" style={{ width : '90vw' }}>
@@ -86,13 +86,13 @@ const CommentsList = ({ comments }) => {
                                     />
                                 </td>
                             </tr>
-                        );
+                        )
                     })}
                 </tbody>
             </Table>
         </div>
-    );
-};
+    )
+}
 
 const ModalConfirmRemoveComment = ({openDialogRemove, handleCloseDialogRemove, handleCallback}) => {
     const { t } = useTranslation()
@@ -123,6 +123,6 @@ const ModalConfirmRemoveComment = ({openDialogRemove, handleCloseDialogRemove, h
 }
 CommentsList.propTypes = {
     comments: PropTypes.array.isRequired
-};
+}
 
-export default CommentsList;
+export default CommentsList

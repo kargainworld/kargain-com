@@ -1,9 +1,9 @@
-import React from "react";
-import clsx from 'clsx';
-import {makeStyles} from "@material-ui/styles";
-import {Avatar, Card, CardContent, Grid, Typography} from "@material-ui/core";
-import MoneyIcon from '@material-ui/icons/Money';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import React from "react"
+import clsx from 'clsx'
+import {makeStyles} from "@material-ui/styles"
+import {Avatar, Card, CardContent, Grid, Typography} from "@material-ui/core"
+import MoneyIcon from '@material-ui/icons/Money'
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -37,12 +37,12 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.error.dark,
         marginRight: theme.spacing(1)
     }
-}));
+}))
 
 const Budget = props => {
-    const {className, ...rest} = props;
+    const {className, ...rest} = props
 
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (
         <Card
@@ -82,7 +82,7 @@ const Budget = props => {
                 </div>
             </CardContent>
         </Card>
-    );
-};
+    )
+}
 
-export default Budget;
+export default Budget

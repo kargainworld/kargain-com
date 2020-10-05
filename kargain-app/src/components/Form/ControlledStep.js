@@ -1,5 +1,5 @@
-import React from 'react';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import React from 'react'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -8,15 +8,15 @@ const useStyles = makeStyles(() => ({
         backgroundColor: '#fff', //f7f8f9
         padding: '1rem'
     }
-}));
+}))
 
 const Step = ({ step, ...stepProps }) => {
-    const classes = useStyles();
-    const { nextStep } = stepProps;
+    const classes = useStyles()
+    const { nextStep } = stepProps
 
     const triggerSkipStep = () => {
-        nextStep();
-    };
+        nextStep()
+    }
 
     return (
         <section className={classes.root}>
@@ -24,7 +24,7 @@ const Step = ({ step, ...stepProps }) => {
                 triggerSkipStep, ...stepProps
             }) : 'step not found'}
         </section>
-    );
-};
+    )
+}
 
-export default Step;
+export default Step

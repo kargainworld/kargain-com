@@ -1,13 +1,13 @@
-import React, { useContext,  useState } from 'react';
-import { MessageContext } from '../../../../context/MessageContext';
-import UsersService from '../../../../services/UsersService';
-import NiceSelect, { components } from 'react-select';
-import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
-import CloseIcon from '@material-ui/icons/Close';
-import BulletPoint from '../../../BulletPoint';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import BooleanBullet from '../../BooleanBullet';
+import React, { useContext,  useState } from 'react'
+import { MessageContext } from '../../../../context/MessageContext'
+import UsersService from '../../../../services/UsersService'
+import NiceSelect, { components } from 'react-select'
+import Button from '@material-ui/core/Button'
+import SaveIcon from '@material-ui/icons/Save'
+import CloseIcon from '@material-ui/icons/Close'
+import BulletPoint from '../../../BulletPoint'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import BooleanBullet from '../../BooleanBullet'
 
 const useStyles = makeStyles(() => ({
     editSelectPop: {
@@ -17,31 +17,31 @@ const useStyles = makeStyles(() => ({
         border: '1px solid gainsboro',
         backgroundColor: 'antiquewhite'
     }
-}));
+}))
 
-const { Option } = components;
+const { Option } = components
 const CustomSelectOption = (props) => {
     return (
         <Option {...props} className="d-flex align-items-center">
             {props.data.icon && props.data.icon}
             {props.data.label}
         </Option>
-    );
-};
+    )
+}
 
 const CustomSelectValue = (props) => (
     <div className="d-flex align-items-center">
         {props.data.icon && props.data.icon}
         {props.data.label}
     </div>
-);
+)
 
 const ActivatedBullet = ({ username, value }) => {
-    const classes = useStyles();
-    const [activated, setActivated] = useState(value);
-    const [clicked, setClicked] = useState(false);
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const classes = useStyles()
+    const [activated, setActivated] = useState(value)
+    const [clicked, setClicked] = useState(false)
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
+    const [selectedOption, setSelectedOption] = useState(null)
     const options = [
         {
             label: 'Yes',
@@ -56,17 +56,17 @@ const ActivatedBullet = ({ username, value }) => {
     ].map(option => ({
         ...option,
         icon: <BulletPoint color={option.color}/>
-    }));
+    }))
 
     const handleUpdate = async () => {
         try {
             const document = await UsersService.updateAdminUser(username, {
                 pro: selectedOption
-            });
-            setActivated(activated => !activated);
-            dispatchModal({ msg: `updated. Mail sent to ${document?.user?.email}` });
+            })
+            setActivated(activated => !activated)
+            dispatchModal({ msg: `updated. Mail sent to ${document?.user?.email}` })
         } catch (err) {
-            dispatchModalError({ err });
+            dispatchModalError({ err })
         }
     }
 
@@ -86,14 +86,14 @@ const ActivatedBullet = ({ username, value }) => {
                     <Button
                         startIcon={<CloseIcon/>}
                         onClick={() => {
-                            setSelectedOption(null);
-                            setClicked(false);
+                            setSelectedOption(null)
+                            setClicked(false)
                         }}
                     />
                     <Button
                         startIcon={<SaveIcon/>}
                         onClick={async () => {
-                            setClicked(false);
+                            setClicked(false)
                             await handleUpdate()
                         }}
                     />
@@ -102,11 +102,11 @@ const ActivatedBullet = ({ username, value }) => {
                 <BooleanBullet
                     bool={value}
                     onClick={() => {
-                        setClicked(true);
+                        setClicked(true)
                     }}/>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default ActivatedBullet;
+export default ActivatedBullet

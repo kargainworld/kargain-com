@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx';
+import clsx from 'clsx'
 import ValidationError from '../Validations/ValidationError'
 
 const CheckBoxInput = ({ name, rules, control, errors, ...props }) => {

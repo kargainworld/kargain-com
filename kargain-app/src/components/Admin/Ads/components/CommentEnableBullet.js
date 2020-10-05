@@ -18,11 +18,11 @@ const CommentEnableBullet = ({ comment, handleDisableAction, handleEnableAction 
                 onClick={() => handleUpdate()}
             />
         </div>
-    );
-};
+    )
+}
 
 CommentEnableBullet.propTypes = {
     comment : PropTypes.object.isRequired
 }
 
-export default CommentEnableBullet;
+export default CommentEnableBullet

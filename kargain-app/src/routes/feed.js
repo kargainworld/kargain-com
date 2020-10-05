@@ -4,19 +4,19 @@ import { useAuth } from '../context/AuthProvider'
 import useIsMounted from '../hooks/useIsMounted'
 
 const Feed = () => {
-    const { isAuthenticated, setForceLoginModal } = useAuth();
+    const { isAuthenticated, setForceLoginModal } = useAuth()
     const isMounted = useIsMounted()
 
     useEffect(()=> {
         if(isMounted && !isAuthenticated){
-            setForceLoginModal(true, true);
+            setForceLoginModal(true, true)
         }
         else{
-            setForceLoginModal(false);
+            setForceLoginModal(false)
         }
     },[isMounted, isAuthenticated])
 
     return <SearchPage fetchFeed={true}/>
-};
+}
 
-export default Feed;
+export default Feed

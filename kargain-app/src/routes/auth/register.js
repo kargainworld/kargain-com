@@ -1,33 +1,33 @@
-import React, { useContext } from 'react';
-import { useRouter } from 'next/router';
-import { Col, Container, Row } from 'reactstrap';
-import { useForm } from 'react-hook-form';
-import useTranslation from 'next-translate/useTranslation';
-import { MessageContext } from '../../context/MessageContext';
-import AuthService from '../../services/AuthService';
+import React, { useContext } from 'react'
+import { useRouter } from 'next/router'
+import { Col, Container, Row } from 'reactstrap'
+import { useForm } from 'react-hook-form'
+import useTranslation from 'next-translate/useTranslation'
+import { MessageContext } from '../../context/MessageContext'
+import AuthService from '../../services/AuthService'
 import TextInput from '../../components/Form/Inputs/TextInput'
 import EmailInput from '../../components/Form/Inputs/EmailInput'
 import CheckBoxInput from '../../components/Form/Inputs/CheckBoxInput'
 import PasswordInput from '../../components/Form/Inputs/PasswordInput'
-import FieldWrapper from '../../components/Form/FieldWrapper';
-import CTAButton from '../../components/CTAButton';
-import SSOProviders from '../../components/SSOProviders';
-import CTALink from '../../components/CTALink';
+import FieldWrapper from '../../components/Form/FieldWrapper'
+import CTAButton from '../../components/CTAButton'
+import SSOProviders from '../../components/SSOProviders'
+import CTALink from '../../components/CTALink'
 
 const formConfig = {
     mode: 'onChange',
     validateCriteriaMode: 'all'
-};
+}
 
 const RegisterPage = () => {
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
-    const { control, errors, getValues, handleSubmit } = useForm(formConfig);
-    const { t } = useTranslation();
-    const router = useRouter();
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
+    const { control, errors, getValues, handleSubmit } = useForm(formConfig)
+    const { t } = useTranslation()
+    const router = useRouter()
 
     const onSubmit = (form) => {
         // eslint-disable-next-line unused-imports/no-unused-vars
-        const { confirm, confirmPwd, ...data } = form;
+        const { confirm, confirmPwd, ...data } = form
         AuthService.register(data)
             .then(() => {
                 router.push('/auth/login')
@@ -35,12 +35,12 @@ const RegisterPage = () => {
                 dispatchModal({
                     persist: true,
                     msg: t('layout:account_created')
-                });
+                })
             }).catch(err => {
-                dispatchModalError({ err });
+                dispatchModalError({ err })
             }
-            );
-    };
+            )
+    }
 
     return (
         <Container>
@@ -121,7 +121,7 @@ const RegisterPage = () => {
                                     },
                                     validate: {
                                         matchesPreviousPassword: (value) => {
-                                            const { password } = getValues();
+                                            const { password } = getValues()
                                             return password === value || t('form_validations:form_validations')
                                         }
                                     }
@@ -149,7 +149,7 @@ const RegisterPage = () => {
                 </Col>
             </Row>
         </Container>
-    );
-};
+    )
+}
 
-export default RegisterPage;
+export default RegisterPage

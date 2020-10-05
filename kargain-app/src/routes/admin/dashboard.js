@@ -1,20 +1,20 @@
-import React from 'react';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import Grid from '@material-ui/core/Grid';
-import Budget from '../../components/Admin/temp/Budget';
-import TotalUsers from '../../components/Admin/temp/TotalUsers';
-import TasksProgress from '../../components/Admin/temp/TasksProgress/TasksProgress';
-import TotalProfit from '../../components/Admin/temp/TotalProfit';
+import React from 'react'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import Grid from '@material-ui/core/Grid'
+import Budget from '../../components/Admin/temp/Budget'
+import TotalUsers from '../../components/Admin/temp/TotalUsers'
+import TasksProgress from '../../components/Admin/temp/TasksProgress/TasksProgress'
+import TotalProfit from '../../components/Admin/temp/TotalProfit'
 
 
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(4)
     }
-}));
+}))
 
 const DashboardAdmin = () => {
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (
         <div className={classes.root}>
@@ -64,7 +64,7 @@ const DashboardAdmin = () => {
                 </Grid>
             </Grid>
         </div>
-    );
-};
+    )
+}
 
-export default DashboardAdmin;
+export default DashboardAdmin

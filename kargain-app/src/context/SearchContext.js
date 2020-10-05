@@ -13,32 +13,32 @@ const defaultValues = {
     }
 }
 
-const SearchContext = createContext(defaultValues);
+const SearchContext = createContext(defaultValues)
 
 const reducer = (state, action) => ({
     ...state,
     ...action.payload
-});
+})
 
 const SearchContextProvider = ({children}) => {
-    const { dispatchModalError } = useContext(MessageContext);
-    const [searchStateContext, setSearchStateContext] = useReducer(reducer, defaultValues);
+    const { dispatchModalError } = useContext(MessageContext)
+    const [searchStateContext, setSearchStateContext] = useReducer(reducer, defaultValues)
     
     const dispatchSearchStateContext = (updates) => {
         setSearchStateContext({
             payload: updates
-        });
-    };
+        })
+    }
     
     const closeSearchModal = () => {
         dispatchSearchStateContext({
             openModalSearch : false
         })
-    };
+    }
     
     const dispatchSearchQuery = (query) => {
         fetchSearch(query)
-    };
+    }
     
     const fetchSearch = (query) => {
         dispatchSearchStateContext({
@@ -48,7 +48,7 @@ const SearchContextProvider = ({children}) => {
         
         SearchService.fetchSearchResults({ q : query })
             .then(results => {
-                const { tags, users, announces } = results;
+                const { tags, users, announces } = results
     
                 dispatchSearchStateContext({
                     loading: false,
@@ -57,11 +57,11 @@ const SearchContextProvider = ({children}) => {
                         users: users ?? [],
                         announces: announces ?? []
                     }
-                });
+                })
                 
             }).catch(err => {
-                dispatchModalError({ err });
-            });
+                dispatchModalError({ err })
+            })
     }
     
     return (
@@ -72,7 +72,7 @@ const SearchContextProvider = ({children}) => {
         }}>
             {children}
         </SearchContext.Provider>
-    );
-};
+    )
+}
 
-export { SearchContext, SearchContextProvider };
+export { SearchContext, SearchContextProvider }

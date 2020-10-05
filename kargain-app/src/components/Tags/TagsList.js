@@ -1,14 +1,14 @@
-import React, {memo} from 'react';
+import React, {memo} from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles(() => ({
     tags: {
         display: 'inline-flex',
         flexWrap: 'wrap',
-        width: '100%',
+        width: '100%'
     },
 
     tag: {
@@ -19,8 +19,8 @@ const useStyles = makeStyles(() => ({
         padding: '5px',
         borderRadius: '10px',
         fontWeight : 'bold'
-    },
-}));
+    }
+}))
 
 const TagsList = memo(({tags, editMode, onRemoveTag}) => {
     const classes = useStyles()
@@ -34,10 +34,10 @@ const TagsList = memo(({tags, editMode, onRemoveTag}) => {
 
                     {editMode && (
                         <span onClick={() => {
-                            onRemoveTag(i);
+                            onRemoveTag(i)
                         }}>
-                        <RemoveCircleIcon/>
-                    </span>
+                            <RemoveCircleIcon/>
+                        </span>
                     )}
                 </li>
             ))}

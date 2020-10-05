@@ -13,26 +13,26 @@ const useStyles = makeStyles((theme) => ({
         flexShrink: 0,
         marginLeft: theme.spacing(2.5)
     }
-}));
+}))
 
 function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
-    const classes = useStyles();
+    const classes = useStyles()
 
     const handleFirstPageButtonClick = () => {
-        onChangePage(0);
-    };
+        onChangePage(0)
+    }
 
     const handleBackButtonClick = () => {
-        onChangePage(page - 1);
-    };
+        onChangePage(page - 1)
+    }
 
     const handleNextButtonClick = () => {
-        onChangePage(page + 1);
-    };
+        onChangePage(page + 1)
+    }
 
     const handleLastPageButtonClick = (event) => {
-        onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-    };
+        onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1))
+    }
 
     return (
         <div className={classes.root}>
@@ -70,7 +70,7 @@ function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
             </Button>
 
         </div>
-    );
+    )
 }
 
 TablePaginationActions.propTypes = {
@@ -78,7 +78,7 @@ TablePaginationActions.propTypes = {
     page: PropTypes.number,
     rowsPerPage: PropTypes.number.isRequired,
     onChangePage: PropTypes.func.isRequired
-};
+}
 
 TablePaginationActions.defaultProps =  {
     page : 0,

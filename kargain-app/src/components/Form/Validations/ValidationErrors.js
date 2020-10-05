@@ -1,6 +1,6 @@
-import React from 'react';
-import { ErrorMessage } from 'react-hook-form';
-import Alert from '@material-ui/lab/Alert';
+import React from 'react'
+import { ErrorMessage } from 'react-hook-form'
+import Alert from '@material-ui/lab/Alert'
 
 const ValidationErrors = ({ errors }) => {
     return Object.keys(errors).map((name, index) => {
@@ -15,11 +15,11 @@ const ValidationErrors = ({ errors }) => {
                                 </Alert>
                             ))}
                         </div>
-                    );
+                    )
                 }}
             </ErrorMessage>
-        );
-    });
-};
+        )
+    })
+}
 
-export default ValidationErrors;
+export default ValidationErrors

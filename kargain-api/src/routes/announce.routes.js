@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const cors = require('cors')
-const config = require('../config')
 const corsMiddleware = require('../middlewares/cors.middleware')
 const passportMiddleware = require('../middlewares/passport')
 const authMiddleware = require('../middlewares/auth.middleware')
@@ -41,14 +40,9 @@ router.get('/search',
 )
 
 router.get('/count',
-    cors(corsMiddleware.authedCors),
+    corsMiddleware.manualCors,
     authMiddleware.byPassAuth(),
     announceController.filterAnnouncesAction(false, false, true)
-)
-
-router.get('/user/:uid',
-    cors(),
-    announceController.getAnnouncesByUserAction
 )
 
 router.get('/slug/:slug',

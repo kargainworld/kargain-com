@@ -70,8 +70,8 @@ const NavbarClient = () => {
                                                     onClick={toggleNavbar}
                                                 />
                                             </div>
+                                            {isAuthenticated ? <LoggedInUserNav vertical/> : <VisitorNav vertical/>}
                                             <NavbarAction vertical={true}/>
-                                            {isAuthenticated ? <LoggedInUserNav/> : <VisitorNav/>}
                                         </div>
                                     ) : (
                                         <div className={clsx("d-flex", "navbar-menu")}>
@@ -107,13 +107,13 @@ const NavbarAction = ({ vertical }) => {
     const classes = useStyles()
     const {register, handleSubmit } = useForm()
     const { dispatchSearchQuery } = useContext(SearchContext)
-    
+
     const onSubmitSearch = (form) => {
         if (form.query) {
             dispatchSearchQuery(form.query)
         }
     }
-    
+
     return (
         <Nav navbar className={clsx("my-2", vertical ? "flex-column" : "flex-row-nav")}>
             <NavItem className="p-2">
@@ -247,14 +247,14 @@ const VisitorNav = ({vertical}) => {
         <Nav navbar className={clsx("my-2", vertical ? "flex-column" : "flex-row-nav")}>
             <NavItem className="p-2">
                 <Link href="/auth/login" prefetch={false}>
-                    <a className="nav-link">
+                    <a className="nav-link py-0">
                         {t('layout:login')}
                     </a>
                 </Link>
             </NavItem>
             <NavItem className="p-2">
                 <Link href="/auth/register" prefetch={false}>
-                    <a className="nav-link">
+                    <a className="nav-link py-0">
                         {t('layout:register')}
                     </a>
                 </Link>

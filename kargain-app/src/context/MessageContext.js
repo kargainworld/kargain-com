@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react'
 
-const MessageContext = createContext({});
+const MessageContext = createContext({})
 
 const MessageContextProvider = ({ children }) => {
     const [state, setState] = useState({
@@ -9,22 +9,22 @@ const MessageContextProvider = ({ children }) => {
         msg: null,
         err: null,
         link: null
-    });
+    })
 
     const dispatchModal = ({ persist, ...action }) => {
-        const timeout = persist ? 4000000 : 4000;
+        const timeout = persist ? 4000000 : 4000
         setState({
             active: true,
             ...action
-        });
+        })
 
         setTimeout(() => {
             setState(state => ({
                 ...state,
                 active: false
-            }));
-        }, timeout);
-    };
+            }))
+        }, timeout)
+    }
 
     useEffect(()=>{
         if(!state.active){
@@ -34,7 +34,7 @@ const MessageContextProvider = ({ children }) => {
                 msg: null,
                 err: null,
                 link: null
-            }));
+            }))
         }
     },[state.active])
 
@@ -45,11 +45,11 @@ const MessageContextProvider = ({ children }) => {
                 type: 'error',
                 persist: true,
                 err: new Error("Can't connect to server")
-            });
+            })
         else dispatchModal({
             ...action,
             type: 'error'
-        });
+        })
     }
 
     return (
@@ -60,7 +60,7 @@ const MessageContextProvider = ({ children }) => {
         }}>
             {children}
         </MessageContext.Provider>
-    );
-};
+    )
+}
 
-export { MessageContext, MessageContextProvider };
+export { MessageContext, MessageContextProvider }

@@ -40,9 +40,7 @@ app.get('/', (req, res) => {
 app.use(config.api_path, routes)
 
 app.get('*', (req, res, next) => {
-    const err = new Error('Page Not Found')
-    err.statusCode = 404
-    next(err)
+    return res.status(404).end('Page Not Found')
 })
 
 app.use((err, req, res, next) => {

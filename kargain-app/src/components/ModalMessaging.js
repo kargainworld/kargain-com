@@ -1,31 +1,31 @@
 import React, { useRef, useContext, useEffect, useState } from 'react'
-import Link from 'next-translate/Link';
+import Link from 'next-translate/Link'
 import useTranslation from 'next-translate/useTranslation'
-import { useForm } from 'react-hook-form';
-import Modal from '@material-ui/core/Modal';
-import Fade from '@material-ui/core/Fade';
-import Typography from '@material-ui/core/Typography';
-import { format } from 'date-fns';
-import parseISO from 'date-fns/parseISO';
-import { MessageContext } from '../context/MessageContext';
-import { useAuth } from '../context/AuthProvider';
-import useStyles from './Conversations/conversation.styles';
-import ValidationError from './Form/Validations/ValidationError';
-import ConversationsService from '../services/ConversationsService';
+import { useForm } from 'react-hook-form'
+import Modal from '@material-ui/core/Modal'
+import Fade from '@material-ui/core/Fade'
+import Typography from '@material-ui/core/Typography'
+import { format } from 'date-fns'
+import parseISO from 'date-fns/parseISO'
+import { MessageContext } from '../context/MessageContext'
+import { useAuth } from '../context/AuthProvider'
+import useStyles from './Conversations/conversation.styles'
+import ValidationError from './Form/Validations/ValidationError'
+import ConversationsService from '../services/ConversationsService'
 import { ModalContext } from '../context/ModalContext'
 
 export default function ModalMessaging () {
     const contentRef = useRef()
-    const classes = useStyles();
+    const classes = useStyles()
     const { t } = useTranslation()
-    const { isAuthenticated, authenticatedUser, setForceLoginModal } = useAuth();
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
-    const { modalStateContext, dispatchModalState } = useContext(ModalContext);
-    const [conversation, setConversation] = useState(null);
+    const { isAuthenticated, authenticatedUser, setForceLoginModal } = useAuth()
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
+    const { modalStateContext, dispatchModalState } = useContext(ModalContext)
+    const [conversation, setConversation] = useState(null)
     const { register, errors, handleSubmit, reset } = useForm({
         mode: 'onChange',
         validateCriteriaMode: 'all'
-    });
+    })
     
     const recipient = modalStateContext.modalMessagingProfile
     const recipientID = recipient.getID
@@ -36,19 +36,19 @@ export default function ModalMessaging () {
     
     const loadConversation = async () => {
         try {
-            let conversation = await ConversationsService.getConversationWithProfile(recipientID);
-            setConversation(conversation);
+            let conversation = await ConversationsService.getConversationWithProfile(recipientID)
+            setConversation(conversation)
         } catch (err) {
-            dispatchModalError({ err });
+            dispatchModalError({ err })
         }
-    };
+    }
     
     const onSubmitMessage = async (form) => {
-        const { message } = form;
+        const { message } = form
         try {
-            const conversation = await ConversationsService.postConversationMessage(message, recipient.getID);
-            setConversation(conversation);
-            dispatchModal({ msg: 'Message posted' });
+            const conversation = await ConversationsService.postConversationMessage(message, recipient.getID)
+            setConversation(conversation)
+            dispatchModal({ msg: 'Message posted' })
             if(contentRef.current){
                 contentRef.current.scrollTop = contentRef.current?.scrollHeight
             }
@@ -57,15 +57,15 @@ export default function ModalMessaging () {
             dispatchModalError({
                 err,
                 persist: true
-            });
+            })
         }
-    };
+    }
 
     useEffect(() => {
         if(isAuthenticated && recipientID){
-            loadConversation();
+            loadConversation()
         }
-    }, [recipientID, isAuthenticated]);
+    }, [recipientID, isAuthenticated])
     
     if(!isAuthenticated) {
         setForceLoginModal(true)
@@ -122,7 +122,7 @@ export default function ModalMessaging () {
                                                                 />
                                                             </div>
                                                         </div>
-                                                    );
+                                                    )
                                                 } else {
                                                     return (
                                                         <div key={index} className={classes.textJustifiedStart}>
@@ -139,7 +139,7 @@ export default function ModalMessaging () {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    );
+                                                    )
                                                 }
                                             })}
                                         </>
@@ -173,5 +173,5 @@ export default function ModalMessaging () {
                 </div>
             </Fade>
         </Modal>
-    );
+    )
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from 'react'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
 
 const Header = ({ as, text, className, children, ...props }) => {
     const classnames = clsx(className, props.center && 'text-center')

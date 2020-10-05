@@ -1,42 +1,42 @@
 import React, { useState, useContext } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import Link from 'next-translate/Link'
-import useTranslation from 'next-translate/useTranslation';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import useTranslation from 'next-translate/useTranslation'
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'
 
 import { useAuth } from '../../context/AuthProvider'
 import { MessageContext } from '../../context/MessageContext'
 import CommentsService from '../../services/CommentsService'
 
 const CommentsList = ({ comments }) => {
-    const { authenticatedUser } = useAuth();
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
-    const [openDialogRemove, setOpenDialogRemove] = useState(false);
+    const { authenticatedUser } = useAuth()
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
+    const [openDialogRemove, setOpenDialogRemove] = useState(false)
     const [selectCommentID, setSelectedCommentID] = useState()
 
     const handleOpenDialogRemove = (commentID) => {
-        setOpenDialogRemove(true);
+        setOpenDialogRemove(true)
         setSelectedCommentID(commentID)
-    };
+    }
 
     const handleCloseDialogRemove = () => {
-        setOpenDialogRemove(false);
-    };
+        setOpenDialogRemove(false)
+    }
 
     const handleRemoveComment = () => {
         CommentsService.disableComment(selectCommentID)
             .then(() => {
-                dispatchModal({ msg: 'Comment successfully removed' });
+                dispatchModal({ msg: 'Comment successfully removed' })
                 window.location.reload()
             }).catch(err => {
-                dispatchModalError({ err });
-            });
-    };
+                dispatchModalError({ err })
+            })
+    }
 
     return (
         <div className="comments">
@@ -72,12 +72,12 @@ const CommentsList = ({ comments }) => {
                                 {comment.getMessage}
                             </Typography>
                         </li>
-                    );
+                    )
                 })}
             </ul>
         </div>
-    );
-};
+    )
+}
 
 const ModalConfirmRemoveComment = ({openDialogRemove, handleCloseDialogRemove, handleCallback}) => {
     const { t } = useTranslation()
@@ -108,6 +108,6 @@ const ModalConfirmRemoveComment = ({openDialogRemove, handleCloseDialogRemove, h
 }
 CommentsList.propTypes = {
     comments: PropTypes.array.isRequired
-};
+}
 
-export default CommentsList;
+export default CommentsList

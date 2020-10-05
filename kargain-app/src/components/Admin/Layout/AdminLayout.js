@@ -31,12 +31,11 @@ const AdminLayout = ({ children }) => {
     return (
         <div className={classes.root}>
             <TopBar handleDrawerToggle={handleDrawerToggle}/>
-            <main className="d-flex">
+            <main className="d-flex" style={{ marginTop : '5rem'}}>
                 <Sidebar
                     onClose={handleDrawerClose}
                     open={open}
                     variant={'temporary'}
-                    // variant={'isDesktop ? 'persistent' : 'temporary''}
                 />
                 <section className={classes.content}>
                     {children}

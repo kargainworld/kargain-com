@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Col, Row } from 'reactstrap';
+import React, { useState } from 'react'
+import { Col, Row } from 'reactstrap'
 
 const tabsRadio = [
     {
@@ -27,16 +27,16 @@ const tabsRadio = [
         img: 'tab-camper.png',
         imgSelected: 'tab-camper-blue.png'
     }
-];
+]
 
 const VehicleTypeFilterSelector = ({ handleSelectVehicleType, name, control, rules }) => {
-    const [type, setType] = useState(null);
+    const [type, setType] = useState(null)
 
     const handleSelect = (index) => {
         const type = tabsRadio[index].value
-        setType(type);
-        handleSelectVehicleType(type);
-    };
+        setType(type)
+        handleSelectVehicleType(type)
+    }
 
     return (
         <section>
@@ -64,11 +64,11 @@ const VehicleTypeFilterSelector = ({ handleSelectVehicleType, name, control, rul
                                 </label>
                             </div>
                         </Col>
-                    );
+                    )
                 })}
             </Row>
         </section>
-    );
-};
+    )
+}
 
-export default VehicleTypeFilterSelector;
+export default VehicleTypeFilterSelector

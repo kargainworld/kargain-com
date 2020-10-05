@@ -6,7 +6,6 @@ import PaginateResultsSituation from '../PaginateResultsSituation'
 import AnnounceCard from '../AnnounceCard'
 import PaginateResults from '../PaginateResults'
 
-
 const SearchResults = ({results}) => {
     const { announces, total, page, size } = results
 

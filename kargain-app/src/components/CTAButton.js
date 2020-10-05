@@ -1,5 +1,5 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from 'react'
+import clsx from 'clsx'
 
 const CTAButton = ({ title, id, className, onClick, submit }) => {
     return (
@@ -10,7 +10,7 @@ const CTAButton = ({ title, id, className, onClick, submit }) => {
             onClick={onClick}>
             {title}
         </button>
-    );
-};
+    )
+}
 
-export default CTAButton;
+export default CTAButton

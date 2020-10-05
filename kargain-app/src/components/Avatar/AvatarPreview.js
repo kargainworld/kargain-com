@@ -10,4 +10,4 @@ const AvatarPreview = ({src}) => {
     )
 }
 
-export default AvatarPreview;
+export default AvatarPreview

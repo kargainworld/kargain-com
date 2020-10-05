@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import useTranslation from 'next-translate/useTranslation';
-import { Alert, Col, Row, TabContent, TabPane } from 'reactstrap';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { makeStyles } from '@material-ui/styles';
-import IconButton from '@material-ui/core/IconButton';
-import DamagesNavResponsive from './DamagesNavResponsive';
-import Header from '../Header';
+import React, { useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import useTranslation from 'next-translate/useTranslation'
+import { Alert, Col, Row, TabContent, TabPane } from 'reactstrap'
+import DeleteIcon from '@material-ui/icons/Delete'
+import { makeStyles } from '@material-ui/styles'
+import IconButton from '@material-ui/core/IconButton'
+import DamagesNavResponsive from './DamagesNavResponsive'
+import Header from '../Header'
 
 const useStyles = makeStyles(() => ({
     annoPickerContainer: {
@@ -65,42 +65,42 @@ const useStyles = makeStyles(() => ({
         height: '1.4rem',
         display: 'inline-block'
     }
-}));
+}))
 
 const DamageSelectorTabs = ({ tabs, defaultMaxDamages, fireChanges, selectorFullWidth, ...props }) => {
-    let annoRefs = [];
-    const classes = useStyles();
-    const { t } = useTranslation();
-    const warningDamageRef = useRef(null);
-    const [activeTab, setActiveTab] = useState(0);
-    const [damagesTabs, setDamagesTabs] = useState([]);
+    let annoRefs = []
+    const classes = useStyles()
+    const { t } = useTranslation()
+    const warningDamageRef = useRef(null)
+    const [activeTab, setActiveTab] = useState(0)
+    const [damagesTabs, setDamagesTabs] = useState([])
 
     useEffect(() => {
-        setDamagesTabs(tabs);
-    }, [tabs]);
+        setDamagesTabs(tabs)
+    }, [tabs])
 
     useEffect(() => {
-        fireChanges(damagesTabs);
-    }, [damagesTabs]);
+        fireChanges(damagesTabs)
+    }, [damagesTabs])
 
     const getClick = (e, indexTab) => {
-        const annoRef = annoRefs[indexTab];
-        const max = tabs[activeTab].maxDamages || defaultMaxDamages;
+        const annoRef = annoRefs[indexTab]
+        const max = tabs[activeTab].maxDamages || defaultMaxDamages
 
         if (damagesTabs[indexTab].stages.length >= max) {
             // scrollToRef(warningDamageRef);
-            return;
+            return
         }
 
-        const x = e.nativeEvent.offsetX / annoRef.offsetWidth;
-        const y = e.nativeEvent.offsetY / annoRef.offsetHeight;
+        const x = e.nativeEvent.offsetX / annoRef.offsetWidth
+        const y = e.nativeEvent.offsetY / annoRef.offsetHeight
 
         const stage = {
             position: {
                 left: `${x * 100}%`,
                 top: `${y * 100}%`
             }
-        };
+        }
 
         setDamagesTabs(damagesTabs =>
             damagesTabs.map((item, i) => {
@@ -108,12 +108,12 @@ const DamageSelectorTabs = ({ tabs, defaultMaxDamages, fireChanges, selectorFull
                     return {
                         ...item,
                         stages: [...item.stages, stage]
-                    };
+                    }
                 } else {
-                    return item;
+                    return item
                 }
-            }));
-    };
+            }))
+    }
 
     const rmStage = (indexTab, indexStage) => {
         setDamagesTabs(damagesTabs =>
@@ -123,13 +123,13 @@ const DamageSelectorTabs = ({ tabs, defaultMaxDamages, fireChanges, selectorFull
                         ...item,
                         stages: item.stages.slice(0, indexStage)
                             .concat(item.stages.slice(indexStage + 1, item.stages.length))
-                    };
+                    }
                 } else {
-                    return item;
+                    return item
                 }
             })
-        );
-    };
+        )
+    }
 
     const onInputStageChange = (indexTab, stageIndex, value) => {
         setDamagesTabs(damagesTabs =>
@@ -142,18 +142,18 @@ const DamageSelectorTabs = ({ tabs, defaultMaxDamages, fireChanges, selectorFull
                                 return {
                                     ...stage,
                                     text: value
-                                };
+                                }
                             } else {
-                                return stage;
+                                return stage
                             }
                         })
-                    };
+                    }
                 } else {
-                    return item;
+                    return item
                 }
             })
-        );
-    };
+        )
+    }
 
     return (
         <section className="anno">
@@ -166,7 +166,7 @@ const DamageSelectorTabs = ({ tabs, defaultMaxDamages, fireChanges, selectorFull
                             key: tab.key,
                             countStages: tab.stages?.length
                         }
-                    )),
+                        ))
                 }}
             />
 
@@ -174,62 +174,62 @@ const DamageSelectorTabs = ({ tabs, defaultMaxDamages, fireChanges, selectorFull
                 {damagesTabs
                     .filter(tab => tab.display)
                     .map((damageTab, indexTab) => {
-                    if (!damageTab.stages) damageTab.stages = [];
-                    const stages = damageTab.stages;
-                    const max = damageTab.maxDamages || defaultMaxDamages;
-                    const col = selectorFullWidth ? 12 : 6;
+                        if (!damageTab.stages) damageTab.stages = []
+                        const stages = damageTab.stages
+                        const max = damageTab.maxDamages || defaultMaxDamages
+                        const col = selectorFullWidth ? 12 : 6
 
-                    return (
-                        <TabPane key={indexTab} tabId={indexTab}>
-                            <Row>
-                                <Col sm={12} md={col} lg={6}>
-                                    <DamagesPicker {...{
-                                        annoRefs,
-                                        indexTab,
-                                        damageTab,
-                                        getClick
-                                    }}/>
-                                </Col>
-                                <Col sm={12} md={col} lg={6}>
-                                    <div className={clsx(classes.annoInputs)}>
-                                        <Header h3> {t('vehicles:damages')} :</Header>
-                                        {stages.length === 0 && <Header p> {t('vehicles:click-image')}</Header>}
-                                        {stages.length >= max && <Alert color="warning">Max {max} damages</Alert>}
-                                        {stages.map((stage, indexStage) => {
-                                            return (
-                                                <div key={indexStage} className={classes.annoInput}>
-                                                    <div style={{ flex: 1 }}>
-                                                        <IconButton
-                                                            aria-label="delete"
-                                                            className={classes.margin}
-                                                            tabIndex="-1"
-                                                            onClick={() => rmStage(indexTab, indexStage)}>
-                                                            <DeleteIcon fontSize="small"/>
-                                                        </IconButton>
-                                                        <span
-                                                            className={clsx(classes.annoNumber)}>{indexStage + 1}</span>
+                        return (
+                            <TabPane key={indexTab} tabId={indexTab}>
+                                <Row>
+                                    <Col sm={12} md={col} lg={6}>
+                                        <DamagesPicker {...{
+                                            annoRefs,
+                                            indexTab,
+                                            damageTab,
+                                            getClick
+                                        }}/>
+                                    </Col>
+                                    <Col sm={12} md={col} lg={6}>
+                                        <div className={clsx(classes.annoInputs)}>
+                                            <Header h3> {t('vehicles:damages')} :</Header>
+                                            {stages.length === 0 && <Header p> {t('vehicles:click-image')}</Header>}
+                                            {stages.length >= max && <Alert color="warning">Max {max} damages</Alert>}
+                                            {stages.map((stage, indexStage) => {
+                                                return (
+                                                    <div key={indexStage} className={classes.annoInput}>
+                                                        <div style={{ flex: 1 }}>
+                                                            <IconButton
+                                                                aria-label="delete"
+                                                                className={classes.margin}
+                                                                tabIndex="-1"
+                                                                onClick={() => rmStage(indexTab, indexStage)}>
+                                                                <DeleteIcon fontSize="small"/>
+                                                            </IconButton>
+                                                            <span
+                                                                className={clsx(classes.annoNumber)}>{indexStage + 1}</span>
+                                                        </div>
+                                                        <div style={{
+                                                            margin: 'auto',
+                                                            flex: 3
+                                                        }}>
+                                                            <input type="text"
+                                                                value={stage.text || ''}
+                                                                onChange={(e) => onInputStageChange(indexTab, indexStage, e.target.value)}
+                                                                className={clsx('form-control form-control-sm')}
+                                                                name={`annotation_${indexStage + 1}`}
+                                                                placeholder={t('vehicles:damages-{number}-description',{ number : indexStage + 1})}
+                                                            />
+                                                        </div>
                                                     </div>
-                                                    <div style={{
-                                                        margin: 'auto',
-                                                        flex: 3
-                                                    }}>
-                                                        <input type="text"
-                                                            value={stage.text || ''}
-                                                            onChange={(e) => onInputStageChange(indexTab, indexStage, e.target.value)}
-                                                            className={clsx('form-control form-control-sm')}
-                                                            name={`annotation_${indexStage + 1}`}
-                                                            placeholder={t('vehicles:damages-{number}-description',{ number : indexStage + 1})}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </Col>
-                            </Row>
-                        </TabPane>
-                    );
-                })}
+                                                )
+                                            })}
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </TabPane>
+                        )
+                    })}
             </TabContent>
 
             {props.enableDebug && (
@@ -237,11 +237,11 @@ const DamageSelectorTabs = ({ tabs, defaultMaxDamages, fireChanges, selectorFull
             )}
 
         </section>
-    );
-};
+    )
+}
 
 const DamagesPicker = ({ annoRefs, indexTab, damageTab, getClick }) => {
-    const classes = useStyles();
+    const classes = useStyles()
     return (
         <div className={clsx(classes.annoPickerContainer)}>
             <div className={clsx(classes.annoStage)}
@@ -260,8 +260,8 @@ const DamagesPicker = ({ annoRefs, indexTab, damageTab, getClick }) => {
                 ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
 DamageSelectorTabs.propTypes = {
     defaultMaxDamages: PropTypes.number,
@@ -274,10 +274,10 @@ DamageSelectorTabs.propTypes = {
         stages: PropTypes.array,
         maxDamages: PropTypes.number
     })).isRequired
-};
+}
 
 DamageSelectorTabs.defaultProps = {
     defaultMaxDamages: 10,
     enableDebug: false
-};
-export default DamageSelectorTabs;
+}
+export default DamageSelectorTabs

@@ -16,7 +16,9 @@ module.exports = {
         API_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
     },
     google: {
-        STATIC_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+        static:{
+            STATIC_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+        },
         sso: {
             CLIENT_ID: process.env.NEXT_PUBLIC_GOOGLE_SSO_CLIENT_ID
         }

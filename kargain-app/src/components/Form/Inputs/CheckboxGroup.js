@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import ValidationError from '../Validations/ValidationError';
+import React, { useEffect, useState } from 'react'
+import clsx from 'clsx'
+import PropTypes from 'prop-types'
+import ValidationError from '../Validations/ValidationError'
 
 const CheckboxGroup = ({ name, control, rules, errors, options, defaultOptions, ...props }) => {
-    const [modelOptions, setModelOptions] = useState([]);
+    const [modelOptions, setModelOptions] = useState([])
 
     useEffect(() => {
-        control.register(name, rules);
-        const modelOptions = control.getValues(name);
+        control.register(name, rules)
+        const modelOptions = control.getValues(name)
         const defaultMatch = defaultOptions.reduce((carry, val) => {
-            const match = options.find(option => option.value.toLowerCase());
-            return (match && val.toLowerCase() === match.value.toLowerCase()) ? [...carry, match] : carry;
-        }, []);
+            const match = options.find(option => option.value.toLowerCase())
+            return (match && val.toLowerCase() === match.value.toLowerCase()) ? [...carry, match] : carry
+        }, [])
         setModelOptions([
             ...modelOptions,
-            ...defaultMatch,
-        ]);
-    }, []);
+            ...defaultMatch
+        ])
+    }, [])
 
     const toggleCheckedOption = (dataset) => {
-        const { label, value } = dataset;
-        const index = modelOptions.findIndex(option => option.value === value);
+        const { label, value } = dataset
+        const index = modelOptions.findIndex(option => option.value === value)
         if (index !== -1) {
-            setModelOptions(options => options.slice(0, index).concat(options.slice(index + 1, options.length)));
+            setModelOptions(options => options.slice(0, index).concat(options.slice(index + 1, options.length)))
         } else {
             setModelOptions(options => [...options, {
                 label,
-                value,
-            }]);
+                value
+            }])
         }
-        control.setValue(name, modelOptions);
-    };
+        control.setValue(name, modelOptions)
+    }
 
     return (
         <>
             <div className={clsx('row', props.center && 'justify-content-center', props.vertical && 'flex-column')}>
                 {options && options.map((option, index) => {
-                    const matchModel = modelOptions.find(modelOption => modelOption.value.toLowerCase() === option.value.toLowerCase());
+                    const matchModel = modelOptions.find(modelOption => modelOption.value.toLowerCase() === option.value.toLowerCase())
                     const checked = !!matchModel
 
                     return (
@@ -53,23 +53,23 @@ const CheckboxGroup = ({ name, control, rules, errors, options, defaultOptions, 
                             />
                             <label htmlFor={`${name}_${index}`}> {option.label} </label>
                         </div>
-                    );
+                    )
                 })}
             </div>
             {errors && <ValidationError errors={errors} name={name}/>}
         </>
-    );
-};
+    )
+}
 
 CheckboxGroup.propTypes = {
     defaultChecked: PropTypes.arrayOf(PropTypes.string),
     name: PropTypes.string.isRequired,
-    center: PropTypes.bool,
-};
+    center: PropTypes.bool
+}
 
 CheckboxGroup.defaultProps = {
     center: true,
-    defaultOptions: [],
-};
+    defaultOptions: []
+}
 
-export default CheckboxGroup;
+export default CheckboxGroup

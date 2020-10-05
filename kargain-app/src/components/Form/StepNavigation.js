@@ -1,9 +1,9 @@
-import React from 'react';
-import { Row } from 'reactstrap';
-import PropTypes from 'prop-types';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import clsx from 'clsx';
-import useTranslation from 'next-translate/useTranslation';
+import React from 'react'
+import { Row } from 'reactstrap'
+import PropTypes from 'prop-types'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import clsx from 'clsx'
+import useTranslation from 'next-translate/useTranslation'
 
 const useStyles = makeStyles(() => ({
     button: {
@@ -12,12 +12,12 @@ const useStyles = makeStyles(() => ({
         marginTop: '40px',
         border: '1px solid'
     }
-}));
+}))
 
 const StepNavigation = ({ prev, prevLabel, next, nextLabel, submit, submitLabel, ...defaultProps }) => {
-    const {defaultPrevLabel, defaultNextLabel, defaultSubmitLabel } = defaultProps;
-    const classes = useStyles();
-    const { t } = useTranslation();
+    const {defaultPrevLabel, defaultNextLabel, defaultSubmitLabel } = defaultProps
+    const classes = useStyles()
+    const { t } = useTranslation()
 
     return (
         <Row className="form_navigation justify-content-around">
@@ -41,18 +41,18 @@ const StepNavigation = ({ prev, prevLabel, next, nextLabel, submit, submitLabel,
             )}
 
         </Row>
-    );
-};
+    )
+}
 
 StepNavigation.propTypes = {
     prev: PropTypes.func,
     next: PropTypes.func
-};
+}
 
 StepNavigation.defaultProps = {
     defaultPrevLabel: 'previous',
     defaultNextLabel: 'following',
     defaultSubmitLabel: 'following'
-};
+}
 
-export default StepNavigation;
+export default StepNavigation

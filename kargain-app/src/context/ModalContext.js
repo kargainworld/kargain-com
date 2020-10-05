@@ -16,21 +16,21 @@ const defaultValues = {
     modalMessagingProfile : new UserModel()
 }
 
-const ModalContext = createContext(defaultValues);
+const ModalContext = createContext(defaultValues)
 
 const reducer = (state, action) => ({
     ...state,
     ...action.payload
-});
+})
 
 const ModalContextProvider = ({children}) => {
-    const [modalStateContext, setModalStateContext] = useReducer(reducer, defaultValues);
+    const [modalStateContext, setModalStateContext] = useReducer(reducer, defaultValues)
     
     const dispatchModalState = (updates) => {
         setModalStateContext({
             payload: updates
-        });
-    };
+        })
+    }
     
     return (
         <ModalContext.Provider value={{
@@ -39,7 +39,7 @@ const ModalContextProvider = ({children}) => {
         }}>
             {children}
         </ModalContext.Provider>
-    );
-};
+    )
+}
 
-export { ModalContext, ModalContextProvider };
+export { ModalContext, ModalContextProvider }

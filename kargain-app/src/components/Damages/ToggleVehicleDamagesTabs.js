@@ -16,7 +16,7 @@ const getValues = (vehicleType) => {
 }
 
 const toggleVehicleDamagesTabs = (vehicleType = "car", tabs) => {
-    const values = getValues(vehicleType);
+    const values = getValues(vehicleType)
     if(!values || !Array.isArray(tabs)) return []
     
     return tabs.map(tab => (values.includes(tab['key'])) ?
@@ -27,6 +27,6 @@ const toggleVehicleDamagesTabs = (vehicleType = "car", tabs) => {
             ...tab,
             display : false
         })
-};
+}
 
 export default toggleVehicleDamagesTabs

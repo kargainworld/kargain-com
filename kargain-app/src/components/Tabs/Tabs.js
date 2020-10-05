@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx';
+import clsx from 'clsx'
 
 const TabsItem = ({ activeTab, index, ...props }) => {
     return (
@@ -10,24 +10,24 @@ const TabsItem = ({ activeTab, index, ...props }) => {
             props.className)}>
             {props.children}
         </div>
-    );
-};
+    )
+}
 
 const Tabs = ({ defaultActive, children, id, handleClickTab}) => {
-    const [activeTab, setActiveTab] = useState(defaultActive || 0);
-    const tabs = !Array.isArray(children) ? [children] : children;
+    const [activeTab, setActiveTab] = useState(defaultActive || 0)
+    const tabs = !Array.isArray(children) ? [children] : children
 
     const onClickTabItem = (index) => {
-        setActiveTab(index);
+        setActiveTab(index)
         handleClickTab(index)
-    };
+    }
 
     return (
         <section className="tabs">
             <ul className="nav nav-tabs m-2 justify-content-center" id={id}>
                 {tabs && tabs.map((item, index) => {
-                    if (!item) return null;
-                    const { title, img : ImgComponent, className } = item.props;
+                    if (!item) return null
+                    const { title, img : ImgComponent, className } = item.props
 
                     return (
                         <li key={index}
@@ -39,7 +39,7 @@ const Tabs = ({ defaultActive, children, id, handleClickTab}) => {
                             {title && <label>{title}</label> }
                             {ImgComponent && ImgComponent }
                         </li>
-                    );
+                    )
                 })}
             </ul>
 
@@ -50,14 +50,14 @@ const Tabs = ({ defaultActive, children, id, handleClickTab}) => {
                         index={index}
                         activeTab={activeTab}
                         {...item.props}
-                    />;
+                    />
                 })}
             </div>
         </section>
-    );
-};
+    )
+}
 
-Tabs.Item = TabsItem;
+Tabs.Item = TabsItem
 
 Tabs.propTypes = {
     defaultActiveIndex : PropTypes.number,
@@ -69,4 +69,4 @@ Tabs.defaultProps = {
     handleClickTab : () => {}
 }
 
-export default Tabs;
+export default Tabs

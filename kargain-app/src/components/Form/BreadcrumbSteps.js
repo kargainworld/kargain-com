@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import clsx from 'clsx';
+import clsx from 'clsx'
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap'
 
 const BreadcrumbSteps = ({ steps, activeStepIndex, maxActiveStep, setStep }) => {

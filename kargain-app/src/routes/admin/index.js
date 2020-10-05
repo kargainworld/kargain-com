@@ -1,2 +1,2 @@
 import DashboardAdmin from './dashboard'
-export default DashboardAdmin;
+export default DashboardAdmin

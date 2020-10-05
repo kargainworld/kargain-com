@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import NiceSelect from 'react-select';
-import useTranslation from 'next-translate/useTranslation';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import React, { useState } from 'react'
+import NiceSelect from 'react-select'
+import useTranslation from 'next-translate/useTranslation'
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward'
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
 
 const Sorters = ({ updateSorter }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation()
     const options = [
         {
             label: t('vehicles:most-recent'),
@@ -71,13 +71,13 @@ const Sorters = ({ updateSorter }) => {
                 asc: false
             }
         }
-    ];
-    const [sorter, setSorter] = useState(options[0]);
+    ]
+    const [sorter, setSorter] = useState(options[0])
 
     const onHandleChange = (sort) => {
-        setSorter(sort);
-        updateSorter(sort.value);
-    };
+        setSorter(sort)
+        updateSorter(sort.value)
+    }
 
     const customSingleValue = ({ data }) => (
         <div className="input-select">
@@ -85,7 +85,7 @@ const Sorters = ({ updateSorter }) => {
                 <span>{data.label}</span>
             </div>
         </div>
-    );
+    )
 
     return (
         <section style={{
@@ -106,7 +106,7 @@ const Sorters = ({ updateSorter }) => {
                 />
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default Sorters;
+export default Sorters

@@ -1,1 +1,1 @@
-export {default} from './TotalUsers';
+export {default} from './TotalUsers'

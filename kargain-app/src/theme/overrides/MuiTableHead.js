@@ -4,4 +4,4 @@ export default {
     root: {
         backgroundColor: colors.grey[50]
     }
-};
+}

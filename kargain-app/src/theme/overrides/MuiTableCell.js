@@ -1,10 +1,10 @@
-import palette from "../palette";
-import typography from "../typography";
+import palette from "../palette"
+import typography from "../typography"
 
 export default {
-  root: {
-    ...typography.body1,
-    borderBottom: `1px solid ${palette.divider}`,
-    fontWeight : 500
-  }
-};
+    root: {
+        ...typography.body1,
+        borderBottom: `1px solid ${palette.divider}`,
+        fontWeight : 500
+    }
+}

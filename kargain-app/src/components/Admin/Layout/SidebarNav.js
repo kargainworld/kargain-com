@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Link from 'next-translate/Link';
-import { makeStyles } from '@material-ui/styles';
-import { colors, List, ListItem } from '@material-ui/core';
-import ListItemIcon from '@material-ui/core/ListItemIcon/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText/ListItemText';
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import Link from 'next-translate/Link'
+import { makeStyles } from '@material-ui/styles'
+import { colors, List, ListItem } from '@material-ui/core'
+import ListItemIcon from '@material-ui/core/ListItemIcon/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText/ListItemText'
 
 const useStyles = makeStyles(theme => ({
     root: {},
@@ -38,11 +38,11 @@ const useStyles = makeStyles(theme => ({
             color: theme.palette.primary.main
         }
     }
-}));
+}))
 
 const SidebarNav = props => {
-    const { pages, className, ...rest } = props;
-    const classes = useStyles();
+    const { pages, className, ...rest } = props
+    const classes = useStyles()
 
     return (
         <List{...rest} className={clsx(classes.root, className)}>
@@ -59,12 +59,12 @@ const SidebarNav = props => {
                 </ListItem>
             ))}
         </List>
-    );
-};
+    )
+}
 
 SidebarNav.propTypes = {
     className: PropTypes.string,
     pages: PropTypes.array.isRequired
-};
+}
 
-export default SidebarNav;
+export default SidebarNav

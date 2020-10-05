@@ -14,10 +14,10 @@ class MyDocument extends Document {
                     <meta property="og:title" content="kargain"/>
                     <meta property="og:url" content="kargain.com"/>
                     <meta name="theme-color" content={theme.palette.primary.main} />
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
                     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"/>
-                    <script type="text/javascript"
-                        src={`https://maps.googleapis.com/maps/api/js?key=${config.google.STATIC_API_KEY}&libraries=places`}/>
+                    <script type="text/javascript" src={`https://maps.googleapis.com/maps/api/js?key=${config.google.static.STATIC_API_KEY}&libraries=places`}/>
                 </Head>
                 <body>
                     <Main/>

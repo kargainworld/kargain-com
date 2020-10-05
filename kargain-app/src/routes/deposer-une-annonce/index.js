@@ -1,38 +1,38 @@
 import React, { useState, useContext, useRef } from 'react'
-import clsx from 'clsx';
+import clsx from 'clsx'
 import { Col, Container, Row } from 'reactstrap'
-import { useRouter, withRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import { useRouter, withRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 import { useForm } from 'react-hook-form'
 import { FormContext } from '../../context/FormContext'
 import { useAuth } from '../../context/AuthProvider'
 import vehicleTypes from '../../business/vehicleTypes.js'
 import AnnounceTypes from '../../business/announceTypes.js'
-import ValidationErrors from '../../components/Form/Validations/ValidationErrors';
+import ValidationErrors from '../../components/Form/Validations/ValidationErrors'
 
-const path = require('path');
+const path = require('path')
 
 const useStyles = makeStyles(() => ({
     button: {
         padding: '1rem',
         border: '1px solid'
     }
-}));
+}))
 
 const Page = () => {
-    const router = useRouter();
-    const classes = useStyles();
+    const router = useRouter()
+    const classes = useStyles()
     const formRef = useRef()
-    const { t } = useTranslation();
-    const { authenticatedUser } = useAuth();
+    const { t } = useTranslation()
+    const { authenticatedUser } = useAuth()
     const [vehicleType, setVehicleType ] = useState()
     const { errors, register, handleSubmit, formState } = useForm({
         mode: "onChange"
-    });
+    })
 
-    const { dispatchFormUpdate } = useContext(FormContext);
+    const { dispatchFormUpdate } = useContext(FormContext)
 
     const handleSelectVehicleType = (index) => {
         const type = vehicleTypes[index]
@@ -41,10 +41,10 @@ const Page = () => {
 
     const onSubmit = (data) => {
         const { adType, vehicleType} = data
-        const route = `${vehicleType.toLowerCase()}`;
-        dispatchFormUpdate({ adType, vehicleType });
-        router.push(path.resolve(router.route, route));
-    };
+        const route = `${vehicleType.toLowerCase()}`
+        dispatchFormUpdate({ adType, vehicleType })
+        router.push(path.resolve(router.route, route))
+    }
 
     return (
         <Container className="annonce1-wrapper-container">
@@ -72,7 +72,7 @@ const Page = () => {
                                     </label>
                                 </div>
                             </Col>
-                        );
+                        )
                     })}
                 </Row>
 
@@ -97,7 +97,7 @@ const Page = () => {
                                         <label htmlFor={`ad_type${index}`}>{tab.label}</label>
                                     </div>
                                 </Col>
-                            );
+                            )
                         })}
                 </Row>
 
@@ -112,7 +112,7 @@ const Page = () => {
                 {errors && <ValidationErrors errors={errors}/>}
             </form>
         </Container>
-    );
-};
+    )
+}
 
-export default withRouter(Page);
+export default withRouter(Page)

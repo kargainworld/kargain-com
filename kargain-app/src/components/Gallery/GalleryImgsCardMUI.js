@@ -1,8 +1,8 @@
-import React from 'react';
-import { Col } from 'reactstrap';
-import Typography from '@material-ui/core/Typography';
-import CardMediaMUI from '../CardMediaMUI';
-import UploadedImage from '../../models/image.model';
+import React from 'react'
+import { Col } from 'reactstrap'
+import Typography from '@material-ui/core/Typography'
+import CardMediaMUI from '../CardMediaMUI'
+import UploadedImage from '../../models/image.model'
 
 const GalleryImgsCardMUI = ({ images }) => {
     return (
@@ -15,7 +15,7 @@ const GalleryImgsCardMUI = ({ images }) => {
                 <div className="m-2 m-auto p-2">
                     <div className="row">
                         {images.map((item, index) => {
-                            const image = new UploadedImage(item);
+                            const image = new UploadedImage(item)
                             return (
                                 <Col key={index} md={4}>
                                     <div className="m-2">
@@ -31,13 +31,13 @@ const GalleryImgsCardMUI = ({ images }) => {
                                             }}/>
                                     </div>
                                 </Col>
-                            );
+                            )
                         })}
                     </div>
                 </div>
             )}
         </>
-    );
-};
+    )
+}
 
-export default GalleryImgsCardMUI;
+export default GalleryImgsCardMUI

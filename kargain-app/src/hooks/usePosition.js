@@ -1,70 +1,70 @@
 import { useState, useLayoutEffect } from 'react'
 
 function getStyle(el, styleName) {
-    return getComputedStyle(el)[styleName];
+    return getComputedStyle(el)[styleName]
 }
 
 function getOffset(el) {
     if (!el) return {top: 0, left: 0}
 
-    const rect = el.getBoundingClientRect();
-    const doc = el.ownerDocument;
-    if (!doc) throw new Error('Unexpectedly missing <document>.');
-    const win = doc.defaultView || doc.parentWindow;
+    const rect = el.getBoundingClientRect()
+    const doc = el.ownerDocument
+    if (!doc) throw new Error('Unexpectedly missing <document>.')
+    const win = doc.defaultView || doc.parentWindow
 
     const winX = (win.pageXOffset !== undefined)
         ? win.pageXOffset
-        : (doc.documentElement || doc.body.parentNode || doc.body).scrollLeft;
+        : (doc.documentElement || doc.body.parentNode || doc.body).scrollLeft
     const winY = (win.pageYOffset !== undefined)
         ? win.pageYOffset
-        : (doc.documentElement || doc.body.parentNode || doc.body).scrollTop;
+        : (doc.documentElement || doc.body.parentNode || doc.body).scrollTop
 
     return {
         top: rect.top + winX,
         left: rect.left + winY
-    };
+    }
 }
 
 function getPosition(el) {
     if (!el) return {top: 0, left: 0 }
 
-    let offset = getOffset(el);
-    let parentOffset = {top: 0, left: 0 };
-    const marginTop = parseInt(getStyle(el, 'marginTop')) || 0;
-    const marginLeft = parseInt(getStyle(el, 'marginLeft')) || 0;
+    let offset = getOffset(el)
+    let parentOffset = {top: 0, left: 0 }
+    const marginTop = parseInt(getStyle(el, 'marginTop')) || 0
+    const marginLeft = parseInt(getStyle(el, 'marginLeft')) || 0
 
     if (getStyle(el, 'position') === 'fixed') {
-        offset = el.getBoundingClientRect();
+        offset = el.getBoundingClientRect()
     } else {
-        const doc = el.ownerDocument;
+        const doc = el.ownerDocument
 
-        let offsetParent = el.offsetParent || doc.documentElement;
+        let offsetParent = el.offsetParent || doc.documentElement
 
         while (offsetParent &&
             (offsetParent === doc.body || offsetParent === doc.documentElement)
         ) {
-            offsetParent = offsetParent.parentNode;
+            offsetParent = offsetParent.parentNode
         }
 
         if (offsetParent && offsetParent !== el && offsetParent.nodeType === 1) {
-            parentOffset = getOffset(offsetParent);
-            parentOffset.top += parseInt(getStyle(offsetParent, 'borderTopWidth')) || 0;
-            parentOffset.left += parseInt(getStyle(offsetParent, 'borderLeftWidth')) || 0;
+            parentOffset = getOffset(offsetParent)
+            parentOffset.top += parseInt(getStyle(offsetParent, 'borderTopWidth')) || 0
+            parentOffset.left += parseInt(getStyle(offsetParent, 'borderLeftWidth')) || 0
         }
     }
 
     return {
         top: offset.top - parentOffset.top - marginTop,
         left: offset.left - parentOffset.left - marginLeft
-    };
+    }
 }
 
 function usePosition(ref) {
-    let { top, left } = getPosition(ref.current);
+    let { top, left } = getPosition(ref.current)
     let [ElementPosition, setElementPosition ] = useState({
         top: top,
         left: left
-    });
+    })
 
     function handleChangePosition() {
         if (ref && ref.current) {
@@ -73,14 +73,14 @@ function usePosition(ref) {
     }
 
     useLayoutEffect(() => {
-        handleChangePosition();
-        window.addEventListener('resize', handleChangePosition);
+        handleChangePosition()
+        window.addEventListener('resize', handleChangePosition)
 
         return () => {
-            window.removeEventListener('resize', handleChangePosition);
+            window.removeEventListener('resize', handleChangePosition)
         }
     }, [ref])
 
-    return ElementPosition;
+    return ElementPosition
 }
-module.exports = usePosition;
+module.exports = usePosition

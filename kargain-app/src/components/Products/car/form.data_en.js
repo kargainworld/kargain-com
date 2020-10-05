@@ -1,153 +1,153 @@
-import { SelectOptionsUtils } from '../../../libs/formFieldsUtils';
+import { SelectOptionsUtils } from '../../../libs/formFieldsUtils'
 
 export const RadioTypeFunction = [
     {
         label: 'Compact,',
-        value: 'compact',
+        value: 'compact'
     },
     {
         label: 'Convertible',
-        value: 'convertible',
+        value: 'convertible'
     },
     {
         label: 'Cupcar',
-        value: 'cupcar',
+        value: 'cupcar'
     },
     {
         label: 'SUV/4x4',
-        value: 'suv',
+        value: 'suv'
     },
     {
         label: 'Sedan',
-        value: 'sedan',
+        value: 'sedan'
     },
     {
         label: 'Break',
-        value: 'break',
+        value: 'break'
     },
     {
         label: 'Minivan',
-        value: 'minivan',
+        value: 'minivan'
     },
     {
         label: 'Other',
-        value: 'other',
-    },
-];
+        value: 'other'
+    }
+]
 
 export const RadioFunctionVehicle = [
     {
         value: 'personal-car',
-        label: 'Véhicule personel',
+        label: 'Véhicule personel'
     },
     {
         value: 'driving-school-car',
-        label: 'Véhicule auto-école',
+        label: 'Véhicule auto-école'
     },
     {
         value: 'post-rental',
-        label: 'Après location',
+        label: 'Après location'
     },
     {
         value: 'cab',
-        label: 'Taxi',
+        label: 'Taxi'
     },
     {
         value: 'company-vehicle',
-        label: 'Véhicule de société',
+        label: 'Véhicule de société'
     },
     {
         value: 'demo-vehicle',
-        label: 'Véhicule de démonstration',
+        label: 'Véhicule de démonstration'
     },
     {
         value: 'Pre-save-vehicle',
-        label: 'Pré-enregistré',
-    },
-];
+        label: 'Pré-enregistré'
+    }
+]
 
 export const RadioVehicleGeneralState = [
     {
         value: 'nine',
-        label: 'New',
+        label: 'New'
     },
     {
         value: 'occasion',
-        label: 'Occasion',
+        label: 'Occasion'
     },
     {
         value: 'collection',
-        label: 'Collection',
+        label: 'Collection'
     },
     {
         value: 'school-driving-car',
-        label: 'Automobile Driving School',
+        label: 'Automobile Driving School'
     },
     {
         value: 'after-rent',
-        label: 'After Rent',
+        label: 'After Rent'
     },
     {
         value: 'taxi',
-        label: 'Taxi',
+        label: 'Taxi'
     },
     {
         value: 'company-car',
-        label: 'Employee’s Vehicle',
+        label: 'Employee’s Vehicle'
     },
     {
         value: 'demo-car',
-        label: 'Demonstration Vehicle',
-    },
-];
+        label: 'Demonstration Vehicle'
+    }
+]
 
 export const RadioChoicesGas = [
     {
         label: 'Diesel',
-        value: 'diesel',
+        value: 'diesel'
     },
     {
         label: 'Gas',
-        value: 'gas',
+        value: 'gas'
     },
     {
         label: 'Ethanol',
-        value: 'ethanol',
+        value: 'ethanol'
     },
     {
         label: 'Electric',
-        value: 'electric',
+        value: 'electric'
     },
     {
         label: 'Hybrid / gasoline',
-        value: 'hybrid-gas',
+        value: 'hybrid-gas'
     },
     {
         label: 'Hydrogen',
-        value: 'hydrogen',
+        value: 'hydrogen'
     },
     {
         label: 'Liquified petroleum gas (LPG),',
-        value: 'gpl',
-    },
-];
+        value: 'gpl'
+    }
+]
 
 export const RadioChoicesEngine = [
     {
         label: 'Automatic',
-        value: 'automatic',
+        value: 'automatic'
     },
     {
         label: 'Manual',
-        value: 'manual',
+        value: 'manual'
     },
     {
         label: 'Semi-automatic',
-        value: 'semi-auto',
-    },
-];
+        value: 'semi-auto'
+    }
+]
 
-export const RadioChoicesEmission = SelectOptionsUtils(['EURO1', 'EURO2', 'EURO3', 'EURO4', 'EURO5', 'EURO6']);
+export const RadioChoicesEmission = SelectOptionsUtils(['EURO1', 'EURO2', 'EURO3', 'EURO4', 'EURO5', 'EURO6'])
 
 export const CheckboxOptionsEquipments = SelectOptionsUtils([
     'ABS', 'Bluetooth', 'CD player', 'ESP', 'MP3', 'USB', 'Start / Stop system',
@@ -164,105 +164,105 @@ export const CheckboxOptionsEquipments = SelectOptionsUtils([
     'Tire pressure monitoring system', 'Blind spot monitor', 'Driver drowsiness detection', 'Isofix', 'Night view assist',
     'Hill holder', 'Traffic sign recognition', 'Lane departure warning system', 'Emergency brake assistant', 'Sport suspension',
     'Sports seats', 'Sport Pack', 'Television', 'Voice control', 'Central door lock', 'Digital radio', 'Electrically adjustable seats',
-    'Power windows', 'Electrically heated windshield',
-]);
+    'Power windows', 'Electrically heated windshield'
+])
 
 export const RadioChoicesExternalColor = [
     {
         value: 'black',
-        label: 'Black',
+        label: 'Black'
     },
     {
         value: 'gray',
-        label: 'Gray',
+        label: 'Gray'
     },
     {
         value: 'white',
-        label: 'White',
+        label: 'White'
     },
     {
         value: 'vert',
-        label: 'Vert',
+        label: 'Vert'
     },
     {
         value: 'beige',
-        label: 'Beige',
+        label: 'Beige'
     },
     {
         value: 'gold',
-        label: 'Gold',
+        label: 'Gold'
     },
     {
         value: 'brown',
-        label: 'Brown',
+        label: 'Brown'
     },
     {
         value: 'orange',
-        label: 'Orange',
+        label: 'Orange'
     },
     {
         value: 'bronze',
-        label: 'Bronze',
+        label: 'Bronze'
     },
     {
         value: 'purple',
-        label: 'Purple',
+        label: 'Purple'
     },
     {
         value: 'blue',
-        label: 'Blue',
+        label: 'Blue'
     },
     {
         value: 'red',
-        label: 'Red',
+        label: 'Red'
     },
     {
         value: 'silver',
-        label: 'Silver',
+        label: 'Silver'
     },
     {
         value: 'yellow',
-        label: 'Yellow',
+        label: 'Yellow'
     },
     {
         value: 'other',
-        label: 'Other',
-    },
-];
+        label: 'Other'
+    }
+]
 
 export const RadioChoicesMaterials = [
     {
         value: 'Alcantre',
-        label: 'alcantre',
+        label: 'alcantre'
     },
     {
         value: 'Cuir',
-        label: 'cuir',
+        label: 'cuir'
     },
     {
         value: 'Cuir partiel',
-        label: 'Cuir-partiel',
+        label: 'Cuir-partiel'
     },
     {
         value: 'Tissu',
-        label: 'tissu',
+        label: 'tissu'
     },
     {
         value: 'Velours',
-        label: 'velours',
+        label: 'velours'
     },
     {
         value: 'Autre',
-        label: 'autre',
-    },
-];
+        label: 'autre'
+    }
+]
 
 export const RadioChoicesPaints = [{
     value: 'metalique',
-    label: 'Métalique',
+    label: 'Métalique'
 },
-    {
-        value: 'autre',
-        label: 'Autre',
-    },
-];
+{
+    value: 'autre',
+    label: 'Autre'
+}
+]

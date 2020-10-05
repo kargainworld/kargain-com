@@ -1,47 +1,47 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { Col, Container, Row } from 'reactstrap';
-import clsx from 'clsx';
+import { Col, Container, Row } from 'reactstrap'
+import clsx from 'clsx'
 import useDimensions from 'react-use-dimensions'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
-import Link from 'next-translate/Link';
-import useTranslation from 'next-translate/useTranslation';
-import ChatIcon from '@material-ui/icons/Chat';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Alert from '@material-ui/lab/Alert';
-import { useAuth } from '../../../context/AuthProvider';
-import { MessageContext } from '../../../context/MessageContext';
+import Link from 'next-translate/Link'
+import useTranslation from 'next-translate/useTranslation'
+import ChatIcon from '@material-ui/icons/Chat'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import Alert from '@material-ui/lab/Alert'
+import { useAuth } from '../../../context/AuthProvider'
+import { MessageContext } from '../../../context/MessageContext'
 import { ModalContext } from '../../../context/ModalContext'
-import UsersService from '../../../services/UsersService';
+import UsersService from '../../../services/UsersService'
 import AnnounceService from '../../../services/AnnounceService'
-import UserModel from '../../../models/user.model';
-import AvatarPreview from '../../../components/Avatar/AvatarPreview';
-import AnnounceCard from '../../../components/AnnounceCard';
-import CTALink from '../../../components/CTALink';
-import Tabs from '../../../components/Tabs/Tabs';
-import Loading from '../../../components/Loading';
+import UserModel from '../../../models/user.model'
+import AvatarPreview from '../../../components/Avatar/AvatarPreview'
+import AnnounceCard from '../../../components/AnnounceCard'
+import CTALink from '../../../components/CTALink'
+import Tabs from '../../../components/Tabs/Tabs'
+import Loading from '../../../components/Loading'
 import AdvancedFilters from '../../../components/Filters/Advanced/AdvancedFilters'
 import { ReactComponent as StarSVGYellow } from '../../../../public/images/svg/star-yellow.svg'
 import { ReactComponent as StarSVG } from '../../../../public/images/svg/star.svg'
 import Error from '../../_error'
 
 const Profile = () => {
-    const { t } = useTranslation();
-    const router = useRouter();
+    const { t } = useTranslation()
+    const router = useRouter()
     const { username } = router.query
-    const { authenticatedUser, isAuthenticated, setForceLoginModal } = useAuth();
-    const { dispatchModalError } = useContext(MessageContext);
-    const { dispatchModalState } = useContext(ModalContext);
-    const [followerCounter, setFollowersCounter] = useState(0);
-    const [alreadyFollowProfile, setAlreadyFollowProfile] = useState(false);
+    const { authenticatedUser, isAuthenticated, setForceLoginModal } = useAuth()
+    const { dispatchModalError } = useContext(MessageContext)
+    const { dispatchModalState } = useContext(ModalContext)
+    const [followerCounter, setFollowersCounter] = useState(0)
+    const [alreadyFollowProfile, setAlreadyFollowProfile] = useState(false)
     const [state, setState] = useState({
         err: null,
         stateReady: false,
         isSelf: false,
         isAdmin: false,
         profile: new UserModel()
-    });
+    })
     
     const [filterState, setFilterState] = useState({
         loading: false,
@@ -49,30 +49,30 @@ const Profile = () => {
         filters: {},
         page: 1,
         total: 0
-    });
+    })
     
     const profile = state.profile
     
     const handleFollowProfile = async () => {
-        if (!isAuthenticated) return setForceLoginModal(true);
+        if (!isAuthenticated) return setForceLoginModal(true)
         try {
             if (alreadyFollowProfile) {
-                await UsersService.unFollowUser(profile.getID);
-                setFollowersCounter(followerCounter => followerCounter - 1);
-                setAlreadyFollowProfile(false);
+                await UsersService.unFollowUser(profile.getID)
+                setFollowersCounter(followerCounter => followerCounter - 1)
+                setAlreadyFollowProfile(false)
             } else {
-                await UsersService.followUser(profile.getID);
-                setFollowersCounter(followerCounter => followerCounter + 1);
-                setAlreadyFollowProfile(true);
+                await UsersService.followUser(profile.getID)
+                setFollowersCounter(followerCounter => followerCounter + 1)
+                setAlreadyFollowProfile(true)
             }
         } catch (err) {
-            dispatchModalError({ err, persist : true });
+            dispatchModalError({ err, persist : true })
         }
-    };
+    }
 
     const fetchProfile = useCallback(async () => {
         try{
-            const result = await UsersService.getUserByUsername(username);
+            const result = await UsersService.getUserByUsername(username)
             const { user, isAdmin, isSelf } = result
             setState(state => ({
                 ...state,
@@ -92,11 +92,11 @@ const Profile = () => {
 
     const fetchAnnounces = useCallback(async () => {
         try{
-            const { sorter, filters, page } = filterState;
+            const { sorter, filters, page } = filterState
             setFilterState(filterState => ({
                 ...filterState,
                 loading: true
-            }));
+            }))
 
             const params = {
                 page,
@@ -104,7 +104,7 @@ const Profile = () => {
                 sort_ord: sorter.asc ? 'ASC' : null,
                 ...filters,
                 user : profile.getID
-            };
+            }
 
             const result = await AnnounceService.getProfileAnnounces(params)
 
@@ -119,7 +119,7 @@ const Profile = () => {
             setFilterState(filterState => ({
                 ...filterState,
                 loading: false
-            }));
+            }))
 
         } catch (err) {
             setFilterState(filterState => ({
@@ -128,7 +128,7 @@ const Profile = () => {
                 err
             }))
         }
-    },[filterState.sorter, filterState.filters, filterState.page]);
+    },[filterState.sorter, filterState.filters, filterState.page])
 
     const updateFilters = (filters) => {
         setFilterState(filterState => ({
@@ -140,25 +140,25 @@ const Profile = () => {
     useEffect(() => {
         setFollowersCounter(profile.getCountFollowers)
         setAlreadyFollowProfile(!!profile.getFollowers.find(follower =>
-            follower.getID === authenticatedUser.getID));
-    }, [authenticatedUser, profile]);
+            follower.getID === authenticatedUser.getID))
+    }, [authenticatedUser, profile])
 
     useEffect(() => {
         console.log('fetch profile')
-        fetchProfile();
-        window.scrollTo(0, 0);
-    }, [fetchProfile]);
+        fetchProfile()
+        window.scrollTo(0, 0)
+    }, [fetchProfile])
 
     useEffect(() => {
         if(state.stateReady){
             console.log('fetch announces')
-            fetchAnnounces();
+            fetchAnnounces()
         }
-    }, [fetchAnnounces]);
+    }, [fetchAnnounces])
 
-    if (!state.stateReady) return null;
+    if (!state.stateReady) return null
     if(filterState.loading) return <Loading/>
-    if (state.err) return <Error statusCode={state.err?.statusCode}/>;
+    if (state.err) return <Error statusCode={state.err?.statusCode}/>
 
     return (
         <Container>
@@ -247,7 +247,7 @@ const Profile = () => {
                                     ) : (
                                         <>
                                             <span className="mx-1" onClick={(e) => {
-                                                e.stopPropagation();
+                                                e.stopPropagation()
                                                 handleFollowProfile()
                                             }}>
                                                 {alreadyFollowProfile ? <StarSVGYellow/> : <StarSVG/>}
@@ -274,7 +274,7 @@ const Profile = () => {
                                                                 alt={user.getUsername}
                                                             />
                                                         </li>
-                                                    );
+                                                    )
                                                 })}
                                         </ul>
                                     </div>
@@ -308,7 +308,7 @@ const Profile = () => {
                                                             alt={user.getUsername}
                                                         />
                                                     </li>
-                                                );
+                                                )
                                             })}
                                         </ul>
                                     </div>
@@ -329,15 +329,15 @@ const Profile = () => {
                 updateFilters
             }}/>
         </Container>
-    );
-};
+    )
+}
 
 const TabsContainer = ({ state, filterState, updateFilters }) => {
-    const { t } = useTranslation();
-    const [refWidth, { width }] = useDimensions();
-    const { isAuthenticated } = useAuth();
-    const [filtersOpened] = useState(false);
-    const { profile, isSelf } = state;
+    const { t } = useTranslation()
+    const [refWidth, { width }] = useDimensions()
+    const { isAuthenticated } = useAuth()
+    const [filtersOpened] = useState(false)
+    const { profile, isSelf } = state
 
     return (
         <Container>
@@ -438,7 +438,7 @@ const TabsContainer = ({ state, filterState, updateFilters }) => {
                 </Col>
             </Row>
         </Container>
-    );
-};
+    )
+}
 
-export default Profile;
+export default Profile

@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import {makeStyles} from "@material-ui/styles";
-import {Avatar, Card, CardContent, Grid, LinearProgress, Typography} from "@material-ui/core";
+import React from "react"
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import {makeStyles} from "@material-ui/styles"
+import {Avatar, Card, CardContent, Grid, LinearProgress, Typography} from "@material-ui/core"
 
-import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
+import InsertChartIcon from '@material-ui/icons/InsertChartOutlined'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,12 +30,12 @@ const useStyles = makeStyles(theme => ({
     progress: {
         marginTop: theme.spacing(3)
     }
-}));
+}))
 
 const TaskProgress = props => {
-    const {className, ...rest} = props;
+    const {className, ...rest} = props
 
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (
         <Card
@@ -73,9 +73,9 @@ const TaskProgress = props => {
             </CardContent>
         </Card>
     )
-};
+}
 
 TaskProgress.propTypes = {
     className: PropTypes.string
-};
-export default TaskProgress;
+}
+export default TaskProgress

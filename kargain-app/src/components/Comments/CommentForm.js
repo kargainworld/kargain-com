@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
 const CommentForm = ({ onSubmitComment, textareaCommentRef, doneSubmitting }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation()
     return (
         <form onSubmit={e => onSubmitComment(e)}
             className="comments-write">
@@ -25,7 +25,7 @@ const CommentForm = ({ onSubmitComment, textareaCommentRef, doneSubmitting }) =>
                 </button>
             </div>
         </form>
-    );
-};
+    )
+}
 
 export default CommentForm

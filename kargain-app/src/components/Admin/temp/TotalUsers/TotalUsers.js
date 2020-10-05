@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import {makeStyles} from "@material-ui/styles";
-import {Avatar, Card, CardContent, Grid, Typography} from "@material-ui/core";
-import PeopleIcon from '@material-ui/icons/PeopleOutlined';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import React from "react"
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import {makeStyles} from "@material-ui/styles"
+import {Avatar, Card, CardContent, Grid, Typography} from "@material-ui/core"
+import PeopleIcon from '@material-ui/icons/PeopleOutlined'
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,11 +38,11 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.success.dark,
         marginRight: theme.spacing(1)
     }
-}));
+}))
 
 const TotalUsers = props => {
-    const {className, ...rest} = props;
-    const classes = useStyles();
+    const {className, ...rest} = props
+    const classes = useStyles()
 
     return (
         <Card
@@ -90,10 +90,10 @@ const TotalUsers = props => {
             </CardContent>
         </Card>
     )
-};
+}
 
 TotalUsers.propTypes = {
     className: PropTypes.string
-};
+}
 
-export default TotalUsers;
+export default TotalUsers

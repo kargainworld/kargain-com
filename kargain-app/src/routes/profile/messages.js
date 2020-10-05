@@ -1,56 +1,56 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import Link from 'next-translate/Link';
-import { useForm } from 'react-hook-form';
-import parseISO from 'date-fns/parseISO';
-import { format } from 'date-fns';
-import clsx from 'clsx';
-import useTranslation from 'next-translate/useTranslation';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import CloseIcon from '@material-ui/icons/Close';
-import UserModel from '../../models/user.model';
-import { useAuth } from '../../context/AuthProvider';
-import ConversationsService from '../../services/ConversationsService';
-import useStyles from '../../components/Conversations/conversation.styles';
-import { MessageContext } from '../../context/MessageContext';
-import ValidationError from '../../components/Form/Validations/ValidationError';
+import Link from 'next-translate/Link'
+import { useForm } from 'react-hook-form'
+import parseISO from 'date-fns/parseISO'
+import { format } from 'date-fns'
+import clsx from 'clsx'
+import useTranslation from 'next-translate/useTranslation'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useTheme } from '@material-ui/core/styles'
+import CloseIcon from '@material-ui/icons/Close'
+import UserModel from '../../models/user.model'
+import { useAuth } from '../../context/AuthProvider'
+import ConversationsService from '../../services/ConversationsService'
+import useStyles from '../../components/Conversations/conversation.styles'
+import { MessageContext } from '../../context/MessageContext'
+import ValidationError from '../../components/Form/Validations/ValidationError'
 
 const Messages = () => {
-    const theme = useTheme();
+    const theme = useTheme()
     const contentRef = useRef()
-    const classes = useStyles();
+    const classes = useStyles()
     const { t } = useTranslation()
-    const { isAuthenticated, authenticatedUser } = useAuth();
-    const { dispatchModal, dispatchModalError } = useContext(MessageContext);
-    const [conversations, setConversations] = useState([]);
-    const [selectedConversation, setSelectedConversation] = useState(null);
-    const [openedConversation, setOpenedConversation] = useState(false);
-    const [selectedRecipient, setSelectedRecipient] = useState(null);
+    const { isAuthenticated, authenticatedUser } = useAuth()
+    const { dispatchModal, dispatchModalError } = useContext(MessageContext)
+    const [conversations, setConversations] = useState([])
+    const [selectedConversation, setSelectedConversation] = useState(null)
+    const [openedConversation, setOpenedConversation] = useState(false)
+    const [selectedRecipient, setSelectedRecipient] = useState(null)
     const { reset, register, errors, handleSubmit } = useForm({
         mode: 'onChange',
         validateCriteriaMode: 'all'
-    });
+    })
     
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'), {
         defaultMatches: true
-    });
+    })
     
     const loadConversations = async () => {
         try {
-            const conversations = await ConversationsService.getCurrentUserConversations();
-            setConversations(conversations);
+            const conversations = await ConversationsService.getCurrentUserConversations()
+            setConversations(conversations)
         } catch (err) {
-            dispatchModalError({ err });
+            dispatchModalError({ err })
         }
-    };
+    }
 
     const onSubmitMessage = async (form) => {
         console.log(form)
-        const { message } = form;
+        const { message } = form
         try {
-            const conversation = await ConversationsService.postConversationMessage(message, selectedRecipient.getID);
-            setSelectedConversation(conversation);
-            dispatchModal({ msg: 'Message posted' });
+            const conversation = await ConversationsService.postConversationMessage(message, selectedRecipient.getID)
+            setSelectedConversation(conversation)
+            dispatchModal({ msg: 'Message posted' })
             if(contentRef.current){
                 contentRef.current.scrollTop = contentRef.current?.scrollHeight
             }
@@ -59,33 +59,33 @@ const Messages = () => {
             dispatchModalError({
                 err,
                 persist: true
-            });
+            })
         }
-    };
+    }
 
     const handleSelectConversation = (index) => {
-        const conversation = conversations[index];
-        setSelectedConversation(conversation);
-        const to = new UserModel(conversation.to);
-        const from = new UserModel(conversation.from);
-        const recipient = from.getID === authenticatedUser.getID ? to : from;
-        setSelectedRecipient(recipient);
-        setOpenedConversation(true);
-    };
+        const conversation = conversations[index]
+        setSelectedConversation(conversation)
+        const to = new UserModel(conversation.to)
+        const from = new UserModel(conversation.from)
+        const recipient = from.getID === authenticatedUser.getID ? to : from
+        setSelectedRecipient(recipient)
+        setOpenedConversation(true)
+    }
 
     const closeConversation = () => {
-        setOpenedConversation(false);
-    };
+        setOpenedConversation(false)
+    }
     
     useEffect(() => {
-        if(isAuthenticated) loadConversations();
-    }, [isAuthenticated]);
+        if(isAuthenticated) loadConversations()
+    }, [isAuthenticated])
 
     useEffect(() => {
         if (conversations.length){
-            handleSelectConversation(0);
+            handleSelectConversation(0)
         }
-    }, []);
+    }, [])
 
     return (
         <>
@@ -96,9 +96,9 @@ const Messages = () => {
                         <div className={classes.scrollerContainer}>
                             <div style={{ width: '100%' }}>
                                 {conversations.length > 0 ? conversations.map((conversation, index) => {
-                                    const to = new UserModel(conversation.to);
-                                    const from = new UserModel(conversation.from);
-                                    const recipient = from.getID === authenticatedUser.getID ? to : from;
+                                    const to = new UserModel(conversation.to)
+                                    const from = new UserModel(conversation.from)
+                                    const recipient = from.getID === authenticatedUser.getID ? to : from
                             
                                     return (
                                         <div key={index}
@@ -125,7 +125,7 @@ const Messages = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                    );
+                                    )
                                 }) : (
                                     <p>{t('vehicles:no_conversations_yet')}</p>
                                 )}
@@ -181,7 +181,7 @@ const Messages = () => {
                                                     />
                                                 </div>
                                             </div>
-                                        );
+                                        )
                                     }
                                     
                                     else {
@@ -200,7 +200,7 @@ const Messages = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        );
+                                        )
                                     }
                                 })}
                             </div>
@@ -227,7 +227,7 @@ const Messages = () => {
                 )}
             </div>
         </>
-    );
-};
+    )
+}
 
-export default Messages;
+export default Messages

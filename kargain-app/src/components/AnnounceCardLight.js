@@ -1,15 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import useTranslation from 'next-translate/useTranslation';
-import Link from 'next-translate/Link';
-import { ReactComponent as StarSVG } from '../../public/images/svg/star.svg';
-import { ReactComponent as StarSVGYellow } from '../../public/images/svg/star-yellow.svg';
-import { useAuth } from '../context/AuthProvider';
-import TagsList from './Tags/TagsList';
-import CTALink from './CTALink';
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import useTranslation from 'next-translate/useTranslation'
+import Link from 'next-translate/Link'
+import { ReactComponent as StarSVG } from '../../public/images/svg/star.svg'
+import { ReactComponent as StarSVGYellow } from '../../public/images/svg/star-yellow.svg'
+import { useAuth } from '../context/AuthProvider'
+import TagsList from './Tags/TagsList'
+import CTALink from './CTALink'
 import AnnounceModel from '../models/announce.model'
 
 const useStyles = makeStyles((theme) => ({
@@ -45,22 +45,22 @@ const useStyles = makeStyles((theme) => ({
         display : 'flex',
         justifyContent : 'space-between'
     }
-}));
+}))
 
 const AnnounceCardLight = ({ announceRaw }) => {
-    const classes = useStyles();
-    const { t } = useTranslation();
-    const announce = new AnnounceModel(announceRaw);
-    const likesCounter = announce.getCountLikes;
-    const { authenticatedUser, isAuthenticated } = useAuth();
+    const classes = useStyles()
+    const { t } = useTranslation()
+    const announce = new AnnounceModel(announceRaw)
+    const likesCounter = announce.getCountLikes
+    const { authenticatedUser, isAuthenticated } = useAuth()
     
     const checkIfAlreadyLike = () => {
-        const matchUserFavorite = authenticatedUser.getFavorites.find(favorite => favorite.getID === announce.getID);
-        const matchAnnounceLike = announce.getLikes.find(like => like.getAuthor.getID === authenticatedUser.getID);
-        return !!matchUserFavorite || !!matchAnnounceLike;
-    };
+        const matchUserFavorite = authenticatedUser.getFavorites.find(favorite => favorite.getID === announce.getID)
+        const matchAnnounceLike = announce.getLikes.find(like => like.getAuthor.getID === authenticatedUser.getID)
+        return !!matchUserFavorite || !!matchAnnounceLike
+    }
     
-    const alreadyLikeCurrentUser = checkIfAlreadyLike();
+    const alreadyLikeCurrentUser = checkIfAlreadyLike()
     
     return (
         <div className={clsx("objava-wrapper", "cardAd", classes.card)}>
@@ -141,15 +141,15 @@ const AnnounceCardLight = ({ announceRaw }) => {
                 />
             </div>
         </div>
-    );
-};
+    )
+}
 
 AnnounceCardLight.propTypes = {
     announceRaw: PropTypes.any.isRequired,
     featuredImgHeight: PropTypes.number
-};
+}
 
 AnnounceCardLight.defaultProps = {
     featuredImgHeight: 500
-};
-export default AnnounceCardLight;
+}
+export default AnnounceCardLight

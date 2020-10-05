@@ -38,17 +38,17 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         justifyContent: 'space-between'
     }
-}));
+}))
 
 const FiltersChanges = ({changes = {}, resetValue}) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation()
     const classes = useStyles()
     const fieldsToHide = ["coordinates"]
     const filtered = Object.keys(fieldOptions).reduce((carry, key)=> {
-        if(fieldsToHide[key]) return carry;
-        const match = resolveObjectKey(changes, key);
+        if(fieldsToHide[key]) return carry
+        const match = resolveObjectKey(changes, key)
         if(match) return {...carry, [key] : match }
-        return carry;
+        return carry
     },{})
 
     return(
@@ -57,8 +57,8 @@ const FiltersChanges = ({changes = {}, resetValue}) => {
                 <ul className="list-style-none">
                     {Object.keys(filtered).map((key, index) => {
                         const filter = filtered[key]
-                        const options = fieldOptions[name];
-                        let val;
+                        const options = fieldOptions[name]
+                        let val
 
                         if(Array.isArray(filter)) {
                             val = filter
@@ -68,10 +68,10 @@ const FiltersChanges = ({changes = {}, resetValue}) => {
                         }
 
                         else if(typeof filter === "object"){
-                            val = options?.suffix ? `${filter?.label} ${options?.suffix}` : filter?.label;
+                            val = options?.suffix ? `${filter?.label} ${options?.suffix}` : filter?.label
                         }
 
-                        else val = options?.suffix ? `${filter} ${options?.suffix}` : filter;
+                        else val = options?.suffix ? `${filter} ${options?.suffix}` : filter
 
                         if(options?.hideValue || !val) return null
 
@@ -87,7 +87,7 @@ const FiltersChanges = ({changes = {}, resetValue}) => {
                                     <span className="text-left"> {t(`filters:${key}`)} : {val} </span>
                                 </Button>
                             </li>
-                        );
+                        )
                     })}
                 </ul>
             )}

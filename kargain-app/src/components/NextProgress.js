@@ -28,7 +28,7 @@ class NextProgress extends React.Component {
     };
 
     render() {
-        const { color, height } = this.props;
+        const { color, height } = this.props
 
         return (
             <style jsx global>{`
@@ -99,7 +99,7 @@ class NextProgress extends React.Component {
                   }
                 }
             `}</style>
-        );
+        )
     }
 
     componentDidMount() {

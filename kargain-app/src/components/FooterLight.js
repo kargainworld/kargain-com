@@ -1,9 +1,9 @@
-import React from 'react';
-import clsx from 'clsx';
-import Link from 'next-translate/Link';
+import React from 'react'
+import clsx from 'clsx'
+import Link from 'next-translate/Link'
 import { Nav, Navbar } from 'reactstrap'
-import useTranslation from 'next-translate/useTranslation';
-import { makeStyles } from '@material-ui/core/styles';
+import useTranslation from 'next-translate/useTranslation'
+import { makeStyles } from '@material-ui/core/styles'
 import DropdownSwitchLangFlags from './Locales/DropdownSwitchLang'
 
 const useStyles = makeStyles((theme) => ({
@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 700,
         paddingRight : '10px'
     }
-}));
+}))
 
 const FooterLight = () => {
-    const { t } = useTranslation();
-    const classes = useStyles();
+    const { t } = useTranslation()
+    const classes = useStyles()
     const links = [
         {
             label: t('layout:about-us'),
@@ -41,7 +41,7 @@ const FooterLight = () => {
             label: t('layout:terms'),
             link: '/static/conditions'
         }
-    ];
+    ]
 
     return (
         <footer>
@@ -55,7 +55,7 @@ const FooterLight = () => {
                                         <a className={classes.link}>{link.label}</a>
                                     </Link>
                                 </li>
-                            );
+                            )
                         })}
 
                         <DropdownSwitchLangFlags dropdownStyle={{top : 'unset', bottom : '-40px'}}/>
@@ -63,7 +63,7 @@ const FooterLight = () => {
                 </Navbar>
             </div>
         </footer>
-    );
-};
+    )
+}
 
-export default FooterLight;
+export default FooterLight

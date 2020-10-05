@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Link from 'next-translate/Link';
-import Modal from '@material-ui/core/Modal';
-import Fade from '@material-ui/core/Fade';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles'
+import Link from 'next-translate/Link'
+import Modal from '@material-ui/core/Modal'
+import Fade from '@material-ui/core/Fade'
+import Typography from '@material-ui/core/Typography'
 import { ModalContext } from '../context/ModalContext'
 
 const useStyles = makeStyles((theme) => ({
@@ -33,11 +33,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         cursor: 'pointer'
     }
-}));
+}))
 
 export default function ModalFollowers () {
-    const classes = useStyles();
-    const { modalStateContext, dispatchModalState } = useContext(ModalContext);
+    const classes = useStyles()
+    const { modalStateContext, dispatchModalState } = useContext(ModalContext)
     
     const handleClose = () => dispatchModalState({
         openModalFollowers : false
@@ -73,12 +73,12 @@ export default function ModalFollowers () {
                                             </a>
                                         </Link>
                                     </li>
-                                );
+                                )
                             })}
                         </ul>
                     </div>
                 </div>
             </Fade>
         </Modal>
-    );
+    )
 }

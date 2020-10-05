@@ -218,5 +218,5 @@ export default ({
     VI: 'Virgin Islands',
     YE: 'Yemen',
     ZM: 'Zambia',
-    ZW: 'Zimbabwe',
-});
+    ZW: 'Zimbabwe'
+})

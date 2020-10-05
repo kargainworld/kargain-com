@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/router';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import TableMUI from '../TableMUI';
-import AnnounceService from '../../../services/AnnounceService';
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
+import AddIcon from '@material-ui/icons/Add'
+import EditIcon from '@material-ui/icons/Edit'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+import TableMUI from '../TableMUI'
+import AnnounceService from '../../../services/AnnounceService'
 import AnnounceModel from '../../../models/announce.model'
-import { MessageContext } from '../../../context/MessageContext';
-import TablePaginationActions from '../TablePaginationActions';
-import { getTimeAgo } from '../../../libs/utils';
-import StatusBullet from './components/StatusBullet';
-import VisibleBullet from './components/VisibleBullet';
-import ActivatedBullet from './components/ActivatedBullet';
+import { MessageContext } from '../../../context/MessageContext'
+import TablePaginationActions from '../TablePaginationActions'
+import { getTimeAgo } from '../../../libs/utils'
+import StatusBullet from './components/StatusBullet'
+import VisibleBullet from './components/VisibleBullet'
+import ActivatedBullet from './components/ActivatedBullet'
 import CommentsListAdmin from '../../Comments/CommentsListAdmin'
 
 const columnsData = [
@@ -35,7 +35,7 @@ const columnsData = [
                     width: 40,
                     borderRadius: '50%'
                 }}
-            />;
+            />
         }
     },
     {
@@ -86,8 +86,8 @@ const columnsData = [
     {
         title: 'Création',
         render: AnnounceModel => {
-            const date = AnnounceModel.getRaw?.updatedAt;
-            return getTimeAgo(date, 'fr');
+            const date = AnnounceModel.getRaw?.updatedAt
+            return getTimeAgo(date, 'fr')
         }
     },
     {
@@ -178,48 +178,48 @@ const detailPanel = [
 ]
 
 const AdsTable = () => {
-    const rowsLength = 60;
-    const router = useRouter();
-    const { dispatchModalError } = useContext(MessageContext);
-    const columns = useMemo(() => columnsData, []);
-    const [loading, setLoading] = useState(false);
-    const [pageIndex, setPageIndex] = useState(0);
+    const rowsLength = 60
+    const router = useRouter()
+    const { dispatchModalError } = useContext(MessageContext)
+    const columns = useMemo(() => columnsData, [])
+    const [loading, setLoading] = useState(false)
+    const [pageIndex, setPageIndex] = useState(0)
     const [resultFetch, setResultsFetch] = React.useState({
         rows: [],
         total: 0
-    });
+    })
 
     const handleItemClick = (e, AnnounceModel) => {
-        if (AnnounceModel) router.push(AnnounceModel.getAnnounceEditLink);
-    };
+        if (AnnounceModel) router.push(AnnounceModel.getAnnounceEditLink)
+    }
 
     const handleChangePageIndex = (pageIndex) => {
-        setPageIndex(pageIndex);
-    };
+        setPageIndex(pageIndex)
+    }
 
     const fetchData = React.useCallback(() => {
-        setLoading(true);
+        setLoading(true)
         AnnounceService.getAnnouncesAll({
             size: rowsLength,
             page: pageIndex
         })
             .then(data => {
-                const { rows } = data;
-                const rowsModel = rows.map(row => new AnnounceModel(row));
+                const { rows } = data
+                const rowsModel = rows.map(row => new AnnounceModel(row))
                 setResultsFetch({
                     ...data,
                     rows: rowsModel
-                });
-                setLoading(false);
+                })
+                setLoading(false)
             })
             .catch(err => {
-                dispatchModalError({ err });
-            });
-    }, [rowsLength, pageIndex]);
+                dispatchModalError({ err })
+            })
+    }, [rowsLength, pageIndex])
 
     useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+        fetchData()
+    }, [fetchData])
 
     return (
         <>
@@ -259,8 +259,8 @@ const AdsTable = () => {
             )}
 
         </>
-    );
+    )
 }
-;
 
-export default AdsTable;
+
+export default AdsTable
