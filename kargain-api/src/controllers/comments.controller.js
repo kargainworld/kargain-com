@@ -19,22 +19,22 @@ exports.createComment = async (req, res, next) => {
     if (!message) {return next(Messages.errors.comment_is_empty)}
 
     try {
-        const comment = new CommentModel({
-            announce: announce_id,
-            user: req.user.id,
-            message
-        })
+	const comment = new CommentModel({
+	    announce: announce_id,
+	    user: req.user.id,
+	    message
+	})
 
-        const doc = await comment.save()
-        announce.comments.push(doc._id)
-        await announce.save()
+	const doc = await comment.save()
+	announce.comments.push(doc._id)
+	await announce.save()
 
-        return res.json({
-            success: true,
-            data: doc
-        })
+	return res.json({
+	    success: true,
+	    data: doc
+	})
     } catch (err) {
-        next(err)
+	throw err
     }
 }
 
@@ -42,9 +42,9 @@ exports.enableComment = async (req, res, next) => {
     if (!req.user) {return next(Errors.UnAuthorizedError(Messages.errors.user_not_found))}
     const { comment_id } = req.params
     const update = await CommentModel.findOneAndUpdate(
-        { _id: comment_id },
-        { enabled: true })
-        .exec()
+	{ _id: comment_id },
+	{ enabled: true })
+	.exec()
     return res.json({ success: true, data: update })
 }
 
@@ -52,9 +52,9 @@ exports.disableComment = async (req, res, next) => {
     if (!req.user) {return next(Errors.UnAuthorizedError(Messages.errors.user_not_found))}
     const { comment_id } = req.params
     const update = await CommentModel.findOneAndUpdate(
-        { _id: comment_id },
-        { enabled: false })
-        .exec()
+	{ _id: comment_id },
+	{ enabled: false })
+	.exec()
     return res.json({ success: true, data: update })
 }
 exports.createCommentResponse = async (req, res, next) => {
@@ -65,26 +65,26 @@ exports.createCommentResponse = async (req, res, next) => {
     if (!message) {return next(Errors.Error(Messages.errors.message_not_found))}
 
     try {
-        const CommentResponse = {
-            user: req.user.id,
-            message
-        }
+	const CommentResponse = {
+	    user: req.user.id,
+	    message
+	}
 
-        if (!comment.responses) {comment.responses = []}
-        comment.responses.push(CommentResponse)
-        const document = await comment.save()
+	if (!comment.responses) {comment.responses = []}
+	comment.responses.push(CommentResponse)
+	const document = await comment.save()
 
-        const populatedComment = await document
-            .populate('user')
-            .populate('responses.user')
-            .execPopulate()
+	const populatedComment = await document
+	    .populate('user')
+	    .populate('responses.user')
+	    .execPopulate()
 
-        return res.json({
-            success: true,
-            data: populatedComment
-        })
+	return res.json({
+	    success: true,
+	    data: populatedComment
+	})
     } catch (err) {
-        return next(err)
+	return next(err)
     }
 }
 
@@ -105,7 +105,7 @@ exports.createCommentLike = async (req, res, next) => {
     if (!comment.likes) {comment.likes = []}
 
     comment.likes.push({
-        user: req.user.id
+	user: req.user.id
     })
 
     const document = await comment.save()
@@ -135,7 +135,7 @@ exports.createCommentResponseLike = async (req, res, next) => {
     if (!response) {return next(Errors.NotFoundError(Messages.errors.response_not_found))}
 
     response.likes.push({
-        user: req.user.id
+	user: req.user.id
     })
 
     const document = await comment.save()
