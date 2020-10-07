@@ -6,16 +6,14 @@ function corsOptions (allowCredentials = false) {
     return {
 	allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
 	preflightContinue: true,
-	origin: 'https://development-kargain-api.vercel.app',
 	credentials: true
-	// origin: function (origin, callback) {
-	//     if (config.whileListDomains.indexOf(origin) !== -1 || enableAllOrigin) {
-	//         logger
-	//         callback(null, allowCredentials ? origin : true)
-	//     } else {
-	//         callback(Errors.UnAuthorizedError('Not allowed by CORS'))
-	//     }
-	// }
+	 origin: function (origin, callback) {
+	     if (config.whileListDomains.indexOf(origin) !== -1) {
+		 callback(null, allowCredentials ? origin : true)
+	     } else {
+		 callback(Errors.UnAuthorizedError('Not allowed by CORS'))
+	     }
+	 }
     }
 }
 
