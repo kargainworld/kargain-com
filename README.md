@@ -39,7 +39,7 @@ How to start working on kargain.com production
 2. Clone your forks
 ```
 $ git clone https://github.com/*exampleuser/repository.git*
-$ cd ~/
+$ cd */repositiry*
 ```
 3. Install dependencies for the backend *kargain-com/kargain-api* and for the frontend *kargain-com/kargain-app*
 ```
