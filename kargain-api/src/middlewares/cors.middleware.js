@@ -3,26 +3,20 @@ const Errors = require('../utils/errors')
 const logger = require('../services/logger')
 
 function corsOptions (allowCredentials = false) {
-    return function (origin, callback) {
-	     if (config.whileListDomains.indexOf(origin) !== -1) {
-		 callback(null, allowCredentials ? origin : true)
-	     } else {
-		 callback(Errors.UnAuthorizedError('Not allowed by CORS'))
-	     }
-	 }
+    return (req, res, next) => {
+        const origin = req.headers.origin
+        if (config.whileListDomains.indexOf(origin) !== -1) {
+            res.header('Access-Control-Allow-Origin', origin)
+        } else {
+            res.header('Access-Control-Allow-Origin', true)
+        }
+        res.header('Access-Control-Allow-Credentials', allowCredentials)
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+        next()
+    }
 }
 
-const manualCors = (req, res, next) => {
-    const origin = req.headers.origin
-    if (config.whileListDomains.indexOf(origin) !== -1){
-	res.header('Access-Control-Allow-Origin', origin)
-    } else {
-	res.header('Access-Control-Allow-Origin', true)
-    }
-    res.header('Access-Control-Allow-Credentials', true)
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-    next()
-}
+const manualCors = corsOptions(true)
 
 const clientCors = corsOptions(false)
 const authedCors = corsOptions(true)
