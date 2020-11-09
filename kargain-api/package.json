@@ -1,9 +1,9 @@
 {
-	"name": "kargain_api",
+	"name": "kargain-api",
 	"version": "1.0.0",
 	"license": "MIT",
 	"description": "kargain API",
-	"repository": "https://github.com/kargainworld/kargain_api",
+	"repository": "https://github.com/kargainworld/kargain-com/kargain-api",
 	"main": "src",
 	"scripts": {
 		"vercel-build": "yarn run build",
@@ -47,6 +47,7 @@
 		"node-fetch": "^2.6.0",
 		"node-mailjet": "^3.3.1",
 		"nodemailer": "^6.4.8",
+		"nodemon": "^2.0.6",
 		"passport": "^0.4.1",
 		"passport-cookie": "^1.0.6",
 		"passport-jwt": "^4.0.0",
