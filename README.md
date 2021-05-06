@@ -67,7 +67,7 @@ In production 🚀
 * decentralized node;
 * integrate blockchain.
 
-for more information contact us in the channel ![Discord](https://img.shields.io/discord/2F757632394504175736%2F760525705951051826?color=%236ba9ee&label=%23development&logo=discord&style=flat-square)
+for more information contact us in the channel ![Discord](https://img.shields.io/discord.com/channels/757632394504175736/760525705951051826?color=%236ba9ee&label=%23kargain-com&logo=discord&style=flat-square)
 
 
 ## Contributors ✨
